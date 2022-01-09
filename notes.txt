@@ -1,6 +1,9 @@
 ---------------------------------
 Git : push files in a folder from the PC to my GitHub account
 ---------------------------------
+git config --list --show-origin
+
+
 1) Go to folder of the files that you want to upload
 cd C:\Users\jamilah\Documents\Github_analysis_PROJECTS\Motor_classification
 
