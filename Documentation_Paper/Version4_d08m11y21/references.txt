@@ -1,0 +1,383 @@
+References : using APA style
+
+Deepdyve.com : 14-day free PRO plan
+By subscribing, you agree that after your free trial, you will pay $49 on a recurring monthly basis unless you cancel at https://www.deepdyve.com/account. You also agree with the Terms of Service and Privacy Policy.
+
+
+-----------------
+Enter a bibliography entry in Libreoffice:
+-----------------
+Insertion - Table des matières et index - Entrée de bibliographie - Editer
+
+
+
+
+(Bles, 2008; Gibb et al, 2010; Perdriel, 1980; Previc et al, 2004; Newman, 2007)
+(Newman, 2007)
+
+
+-------------------------------
+
+For setting spell-check : Outils - Options... - Parametres linguistiques
+
+-------------------------------
+
+-----------------
+Links to find papers
+-----------------
+http://booksc.org/ 				(articles)
+http://b-ok.org  (http://bookzz.org/)  		(books)
+https://www.researchgate.net/
+http://www.freebookspot.es/			(books)
+https://www.deepdyve.com			(articles)
+
+-----------------
+Order of references
+-----------------
+References
+
+Angelaki, D. E., & Cullen, K. E. (2008). Vestibular system: The many facets of a multimodal sense. Annu Rev Neurosci , 31 (1), 125-150.
+
+Bellmann, T., Heindl, J., Hellerer, M., Kuchar, R., Sharma, K., & Hirzinger, G. (2011). The dlr robot motion simulator part i: Design and setup. In 2011 ieee international conference on robotics and automation (pp. 4694–4701).
+
+Bermudez-Rey, M. C., Clark, T. K., Wang, W., Leeder, T., Bian, Y., & Merfeld, D. M. (2016).  Vestibular perceptual thresholds increase above the age of 40. Frontiers in Neurology, 7 , 162.
+
+Bles, W. (2008). Spatial disorientation training demonstration and avoidance.
+
+Bouchard, S., Robillard, G., & Renaud, P. (2007). Revising the factor structure of the simulator sickness questionnaire. Annual Review of CyberTherapy and Telemedicine, 5 , 117-122.
+
+Burkov, A. (2019). The hundred-page machine learning book. Andriy Burkov Canada.
+
+Chaudhuri, S. E., Karmali, F., & Merfeld, D. M. (2013). Whole body motion-detection tasks can yield much lower thresholds than direction-recognition tasks: implications for the role of vibration. J Neurophysiol , 110 (12), 2764–2772.
+
+Cheung, B., Hofer, K., Brooks, C. J., & Gibbs, P. (2000). Underwater disorientation as induced by two helicopter ditching devices. Aviation, Space, and Environmental Medicine, 71 (9), 879–888.
+
+Denquin, F., Foucher, J., Pla, S., Sarrazin, J.-C., & Bardy, B. G. (2021). Optical and gravito-inertial contributions to the perception and control of height in a simulated low-altitude flight context. Ergonomics, 64 (10), 1297–1309.
+
+Gibb, R., Gray, R., & Scharff, L. (2010). Aviation visual perception: Research, misperception and mishaps. Ashgate.
+
+Gillingham, K. K., & Previc, F. H. (1993). Spatial orientation in flight (Tech. Rep. No. AL-TR-1993-0022).
+
+Haburcakova, C., Lewis, R. F., & Merfeld, D. M. (2012). Frequency dependence of vestibuloocular reflex thresholds. J Neurophysiol , 107 (3), 973–983.
+
+Hartmann, M., Haller, K., Moser, I., Hossner, E.-J., & Mast, F. W. (2014). Direction detection thresholds of passive self-motion in artistic gymnasts. Exp Brain Res, 232 (4), 1249–1258.
+
+Karmali, F., Bermudez Rey, M. C., Clark, T. K., Wang, W., & Merfeld, D. M. (2017). Multivariate analyses of balance test performance, vestibular thresholds, and age. Frontiers in Neurology, 8 , 578.
+
+Kennedy, R. S., Lane, N. E., Berbaum, K. S., & Lilienthal, M. G. (1993). Simulator sickness questionnaire: An enhanced method for quantifying simulator sickness. International Journal of Aviation Psychology, 3 (3), 203-220.
+
+Landrieu, J., Abdur-Rahim, J., Sarrazin, J.-C., & Bardy, B. (2017). Time-to-collision estimates during congruent visuo-vestibular stimulations. In Studies in perception and action xiv: Nineteenth international conference on perception and action (ipca) (pp. 109–112).
+
+Melvill, J. G., & Young, L. R. (1978). Subjective detection of vertical acceleration: a velocity dependent response. Acta Otolaryngol , 85 , 45—53.
+
+Newman, D. G., & FAICD, A. (2007). An overview of spatial disorientation as a factor in aviation accidents and incidents (No. B2007/0063). Australian Transport Safety Bureau Canberra City, Australia.
+
+Perdriel, G., & Benson, A. J. (1980). Spatial disorientation in flight: Current problems (Tech. Rep.). Advisory Group for Aerospace Research and Development Neuilly-sur-Seine (France).
+
+Previc, F. H., & Ercoline, W. R. (2004). Spatial disorientation in aviation. Reston ,VA: American
+Institute of Aeronautics and Astronautics.
+
+Radomsky, A. S., Ouimet, A. J., Ashbaugh, A. R., Paradis, M. R., Lavoie, S. L., & O’Connor, K. P. (2006). Psychometric properties of the french and english versions of the claustrophobia questionnaire (clq). Journal of Anxiety Disorders, 20 (6), 818–828.
+
+Radomsky, A. S., Rachman, S., Thordarson, D. S., McIsaac, H. K., & Teachman, B. A. (2001).  The claustrophobia questionnaire. Journal of Anxiety Disorders, 15 (4), 287-297.
+
+Sargent, J., Dopkins, S., Philbeck, J., & Arthur, J. (2008). Exploring the process of progressive disorientation. Acta Psychol , 129 (2), 234–242.
+
+Shadmehr, R., & Wise, S. P. (2004). The computational neurobiology of reaching and pointing: a foundation for motor learning. MIT press.
+
+Soyka, F., Giordano, P. R., Beykirch, K., & Bulthoff, H. H. (2011). Predicting direction detection thresholds for arbitrary translational acceleration profiles in the horizontal plane. Exp Brain Res, 209 (1), 95–107.
+
+Valko, Y., Lewis, R. F., Priesol, A. J., & Merfeld, D. M. (2012). Vestibular labyrinth 784 contributions to human whole-body motion discrimination. J Neurosci, 32 (39), 13537–13542.
+
+
+
+
+
+
+
+
+-----------------
+SD in aviation
+-----------------
+Bles, W. (2008). Spatial disorientation training demonstration and avoidance.
+
+Gibb, R., Gray, R., & Scharff, L. (2016). Aviation visual perception: Research, misperception and mishaps. Routledge.
+
+Perdriel, G., & Benson, A. J. (1980). Spatial Disorientation in flight: Current problems. ADVISORY GROUP FOR AEROSPACE RESEARCH AND DEVELOPMENT, Neuilly-sur-Seine, France.
+
+Gillingham, K. K., & Previc F. H. (1993).  Spatial Orientation in Flight.  Armstrong lab brooks AFB TX, AL-TR-1993-0022.
+
+Previc, F. H., & Ercoline, W. R. (Eds.). (2004). Spatial disorientation in aviation (Vol. 203).  American Institute of Aeronautics and Astronautics. 
+
+Newman, D. G., & FAICD, A. (2007). An overview of spatial disorientation as a factor in aviation accidents and incidents (No. B2007/0063). Canberra City, Australia: Australian Transport Safety Bureau.
+
+Chaudhuri, S. E., Karmali, F., & Merfeld, D. M. (2013). Whole body motion-detection tasks can yield much lower thresholds than direction-recognition tasks: implications for the role of vibration. Journal of neurophysiology, 110(12), 2764-2772.
+
+
+
+-----------------
+vestibular psychology
+-----------------
+Angelaki, D. E., & Cullen, K. E. (2008). Vestibular system: the many facets of a multimodal sense. Annu. Rev. Neurosci., 31, 125-150.
+
+
+
+-----------------
+vestibular thresholds, motion detection, motion perception
+-----------------
+Melvill, J. G., & Young, L. R. (1978). Subjective detection of vertical acceleration: a velocity-dependent response. Acta Otolaryngology, 85, 45—53.
+
+C. Haburcakova, D. M. M., R. F. Lewis. (2012). Frequency dependence of vestibuloocular reflex thresholds. J Neurophysiol, 107, 973-983.
+
+Soyka, F., Giordano, P. R., Beykirch, K., & Bulthoff, H. H. (2011). Predicting direction detection thresholds for arbitrary translational acceleration profiles in the horizontal plane. Exp Brain Res, 209, 95-107.
+	- The acceleration profile influences motion detection, compared triangular, sinusoidal, and  trapizondal acceleration profiles (for a ramp position trajectory)
+	- Used a transfer function model of the 
+
+Bermudez-Rey, M. C., Clark, T. K., Wang, W., Leeder, T., Bian, Y., & Merfeld, D. M. (2016). Vestibular perceptual thresholds increase above the age of 40. Frontiers in Neurology, 7.
+
+Karmali, F., Bermudez-Rey, M. C., Clark, T. K., Wang, W., & Merfeld, D. M. (2017). Multivariate analyses of balance test performance, vestibular thresholds, and age. Frontiers in Neurology,
+
+Valko, Y., Lewis, R. F., Priesol, A. J., & Merfeld, D. M. (2012). Vestibular labyrinth contributions to human whole-body motion discrimination. J Neurosci, 32, 13537-13542. 
+	
+M. Hartmann, I. M. E. J. H. F. W. M., K. Haller. (2014). Direction detection thresholds of passive self-motion in artistic gymnasts. Exp Brain Res, 232, 1249-1258.
+
+
+
+-----------------
+SD motion perception research
+-----------------
+B. Cheung, C. J. B. P. G., K. Hofer. (2000). Underwater disorientation as induced by two helicopter ditching devices. Aviation, Space, and Environmental Medicine, 71, 879-888.
+
+J. Sargent, J. P. J. A., S. Dopkins. (2008). Exploring the process of progressive disorientation.  Acta Psychol, 129, 234–242.
+
+
+-----------------
+iMose simulator
+-----------------
+Bellmann T, Heindl J, Hellerer M, Kuchar R, Sharma K & Hirzinger G (2011).  The DLR Robot Motion Simulator Part I: Design and setup. 2011 IEEE International Conference on Robotics and Automation, Shanghai, 4694-4701.
+
+Landrieu, J., Abdur-Rahim, J., Sarrazin, J.-C., & Bardy, B. (2017). Time-to-collision estimates during congruent visuo-vestibular stimulation. In Studies in perception and action xiv: 19th international conference on perception and action (ipca) (pp. 109–112). Seoul.
+
+Francois Denquin, Jamilah Foucher, Simon Pla, Jean-Christophe Sarrazin & Benoit G. Bardy (2021) Optical and gravito-inertial contributions to the perception and control of height in a simulated Low-Altitude Flight context, Ergonomics, 64:10, 1297-1309.
+
+
+-----------------
+Questionnaires : SSQ and claustrophobia
+-----------------
+Bouchard, S., Robillard, G., & Renaud, P. (2007). Revising the factor structure of the simulator sickness questionnaire. Annual Review of CyberTherapy and Telemedicine, 5, 117–122. 
+
+Kennedy, R. S., Lane, N. E., Berbaum, K. S., & Lilienthal, M. G. (1993). Simulator sickness questionnaire: An enhanced method for quantifying simulator sickness. International Journal of Aviation Psychology, 3(3), 203–220.
+
+Radomsky, A. S., Rachman, S., Thordarson, D. S., McIsaac, H. K., & Teachman, B. A. (2001). The claustrophobia questionnaire. Journal of Anxiety Disorders, 15(4), 287–297. 
+
+AS Radomsky, AJ Ouimet, AR Ashbaugh, MR Paradis, SL Lavoie, KP O’Connor. (2006).  Psychometric properties of the French and English versions of the Claustrophobia Questionnaire (CLQ). Journal of Anxiety Disorders, 20(), 818–828.
+
+
+-----------------
+Machine learning
+-----------------
+Vijay K. Vemuri (2020).  Scientific acknowledgement of The Hundred-Page Machine Learning Book by Andriy Burkov at Amazon 2019.  Journal of Information Technology Case and Application Research, 22(2), 136-138.
+
+
+-----------------
+human motor movement
+-----------------
+
+
+
+
+
+
+
+
+
+-----------------
+I could not read these papers and confirm the reference.  They are not freely online or on researchgate, deepdyve.  Also, they are quite old and are cited in several of the newer motion detection references.  For example, 1) Benson 1989 is cited in Valko_2012, 2) Works of Young (1968, 1978, 1989) are also cited in Soyka_2011, 3) Young 1966 is cited in Melvill_1978.
+-----------------
+(vestibular thresholds, motion detection, motion perception)
+Young, L. R., Meiry, J. L., & Li, Y. T. (1966). Control engineering approaches to human dynamic space orientation (Tech. Rep. No. SP-115). National Academy of Science Workshop on Orientation in the Exploration of Space NASA. 
+
+@article{Young_1966_Control,
+  title={Control engineering approaches to human dynamic space orientation},
+  author={Young, Laurence R and Meiry, Jacob L and Li, Yao T},
+  journal={Role of vestibular organs in space exploration, NASA SP-115 US Govt. printing office, Washington DC},
+  pages={217--227},
+  year={1966},
+  publisher={Citeseer}
+}
+
+-----------------
+(vestibular thresholds, motion detection, motion perception)
+Guedry, F. E. (1974). Psychophysics of vestibular sensation. In H. H. Kornhuber (Ed.), Vestibular system part 2: Psychophysics, applied aspects and general interpretations (Vol. 6, pp. 3–154).  Springer.
+
+@incollection{Guedry_1974_Psychophysics,
+  title = {Psychophysics of vestibular sensation},
+  author = {Guedry, Fred E},
+  booktitle = {Vestibular system part 2: psychophysics, applied aspects and general interpretations},
+  pages = {3--154},
+  year = {1974},
+  publisher = {Springer}
+}
+
+-----------------
+(vestibular thresholds, motion detection, motion perception)
+Benson, A. J., Hutt, E. C., & Brown, S. F. (1989). Thresholds for the perception of whole body angular movement about a vertical axis. Aviat Space Environ Med, 60, 205–213.
+
+@Article{Benson_1989_Thresholds,
+  author = {A. J. Benson, E. C. Hutt, and S. F. Brown},
+  title = {Thresholds for the perception of whole body angular movement about a vertical axis},
+  journal = {Aviat Space Environ Med},
+  year = {1989},
+  volume = {60},
+  pages = {205–213}
+}
+
+-----------------
+(vestibular thresholds, motion detection, motion perception)
+Benson, A. J., Spencer, M. B., & Stott, J. R. (1986). Thresholds for the detection of the direction of whole-body, linear movement in the horizontal plane. Aviat Space Environ Med, 57, 1088–1096.
+
+@Article{Benson_1986_Thresholds,
+  author = {A. J. Benson, M. B. Spencer, and J. R. Stott},
+  title = {Thresholds for the detection of the direction of whole-body, linear movement in the horizontal plane},
+  journal = {Aviat Space Environ Med},
+  year = {1986},
+  volume = {57},
+  pages = {1088–1096}
+}
+
+-----------------
+
+
+
+
+
+
+
+-----------------
+Extra
+-----------------
+
+Barmack, N. H. (1981). A comparison of the horizontal and vertical vestibulo-ocular reflexes of the rabbit. J Physiol, 314, 547–564.
+
+Benson, A. J., Bischof, N., Collins, W. E., Fregly, A. R., Graybiel, A., Guedry, F. E., & Johnson, W. H. (1974). Handbook of sensory physiology volume v1/2 - vestibular system part 2: Psychophysics, applied aspects and general interpretations. New York: Springer-Verlag Berlin Heidelberg.
+
+Bringoux, L., Schmerber, S., Nougier, V., Dumas, G., Barraud, P., & Raphel, C. (2002). Perception of slow pitch and roll body tilts in bilateral labyrinthine-defective subjects. Neuropsychologia, 40, 367–372.
+
+Bronstein, A. (2013). Oxford textbook of vertigo and imbalance. Oxford: Oxford University Press. 
+
+Bruyer, R., & Brysbaert, M. (2011). Combining speed and accuracy in cognitive psychology: Is the inverse efficiency score (IES) a better dependent variable than the mean reaction time (RT) and the percentage of errors (PE)? Psychologica Belgica, 51(1), 5–13.
+
+
+
+Chih-Chung Chang and Chih-Jen Lin, LIBSVM : a library for support vector machines. ACM Transactions on Intelligent Systems and Technology, 2:27:1--27:27, 2011. Software available at http://www.csie.ntu.edu.tw/~cjlin/libsvm 
+
+Christianini, N., & Shawe-Taylor, J. (2000). An introduction to support vector machines and other kernel-based learning methods. Cambridge: Cambridge University Press.
+
+Crane, B. T. (2016). Perception of combined translation and rotation in the horizontal plane in humans. J Neurophysiol, 116, 1275-1285.
+
+Day, B. L., & Fitzpatrick, R. C. (2005). The vestibular system. Current Biology, 15(15), 583–586. 
+
+Draheim, C., Hicks, K. L., & Engle, R. W. (2016). Combining reaction time and accuracy: The relationship between working memory capacity and task switching as a case example.  Perspectives on Psychological Science, 11(1), 133–155.
+
+Eriksson, L., & von Hofsten, C. (2005). Effects of visual flow display of flight maneuvers on perceived spatial orientation. Human Factors, 47(2), 378–393.
+
+Eriksson, L., von Hofsten, C., Tribukait, A., Eiken, O., Andersson, P., & Hedstro ̈m, J. (2008, September). Visual flow scene effects on the somatogravic illusion in non-pilots. Aviation, Space, and Environmental Medicine, 79(9), 860–866.
+
+
+
+(GAMA), G. A. M. A. (2017). 2016 general aviation statistical databook and 2017 industry outlook (Tech. Rep.). Washington, DC: GAMA.
+
+Gillingham, K. K., & Previc, F. H. (1993). Spatial orientation in flight (Tech. Rep. No. AL-TR- 1993-0022). Armstrong Laboratory (AFMC).
+
+Gillingham, K. K., & Wolfe, J. W. (1986, dec). Spatial orientation in flight (Tech. Rep. No. USAFSAM-TR-85-31). Brooks Air Force Base, Texas: USAF School of Aerospace Medicine. 
+
+Grabherr, L., Nicoucar, K., Mast, F. W., & Merfeld, D. M. (2008). Vestibular thresholds for yaw rotation about an earth-vertical axis as a function of frequency. Exp Brain Res, 186, 677–681.
+
+Gracio, B. J., de Winkel, K. N., Groen, E. L., Wentink, M., & Bos, J. E. (2013). The time constant of the somatogravic illusion. Exp Brain Res, 224(3), 313–321.
+
+Gradwell, D. P., & Rainford, D. J. (2016). Ernsting’s aviation and space medicine, 5th edition.  Boca Raton, FL: CRC Press Taylor & Francis Group.
+
+Green, A. M., & Angelaki, D. E. (2003). Resolution of sensory ambiguities for gaze stabilization requires a second neural integrator. J Neurosci, 23, 9265–9275.
+
+
+
+Hess, R. A. (1990). Model for human use of motion cues in vehicular control. Journal of Guidance, Control, and Dynamics, 13(3), 476–482.
+
+Jongkees, L. B. (1961). The influence of some drugs upon the function of the labyrinth. Acta Otolaryngol, 52, 281–285.
+
+
+
+ 
+
+Karmali, F., Chaudhuri, S. E., Yi, Y., & Merfeld, D. M. (2016). Determining thresholds using adaptive procedures and psychometric fits: evaluating efficiency using theory, simulations, and human experiments. Exp Brain Res, 234, 773–789.
+
+Kennedy, Q., Taylor, J. L., Reade, G., & Yesavage, J. A. (2010). Age and expertise effects in aviation decision making and flight control in a flight simulator. Aviat Space Environ Med, 81, 489–497.
+
+
+
+Kingma, H. (2005). Thresholds for perception of direction of linear acceleration as a possible evaluation of the otolith function. BMC Ear, Nose and Throat Disorders, 5(5).
+
+Kitchen, B. J. (1983). Horizontal and vertical eye deviations in response to linear accelerations (Unpublished master’s thesis). Massachusetts Institute of Technology, Cambridge, Massachusetts.
+
+
+
+Lawson, B. D., Williams, H. P., Newman, M. C., McGrath, B. J., & Rupert, A. H. (2017). Understanding of a key aspect of situation awareness: a research and development agenda to refine the model of spatial orientation (Tech. Rep. No. USAARL 2017-14). Fort Rucker, AL: U.S. Army Aeromedical Research Laboratory.
+
+Loomis, J. M., Klatzky, R. L., Golledge, R. G., Cicinelli, J. G., Pellegrino, J. W., & Fry, P. A.  (1993). Nonvisual navigation by blind and sighted: Assessment of path integration ability.  Journal of Experimental Psychology: General, 122, 73–91.
+
+Mardirossian, V., Karmali, F., & Merfeld, D. M. (2014). Thresholds for human perception of roll tilt motion: patterns of variability based on visual, vestibular, and mixed cues. Otol Neurotol, 35, 857–860.
+
+Mars, F. (2001). La desorientation spatiale en aeronautique: Apport des neurosciences int ́egratives `a la conception des postes de pilotage (Unpublished doctoral dissertation). Universit ́e de la M ́editerran ́ee Aix Marseille II, Marseille Cedex 07, France. 
+
+Matthews, S., Previc, F., & Bunting, A. (2002, april). Usaf spatial disorientation survey. In Presented at rto hfm symposium on “spatial disorientation in military vehicles: Causes, consequences and cures” and published in rto-mp-086.
+
+McCabe, B. F. (1964). Nystagmus response of the otolith organs. Laryngscope V , 76.
+
+McRuer, D., & Jex, H. (1967, September). A review of quasi-linear pilot models. IEEE Transactions on Human Factors in Electronics, HFE-8(3), 231–249.
+
+
+
+Merfeld, D., Park, S., Gianna-Poulin, C., Black, F. O., & Wood, S. (2005). Vestibular perception and action employ qualitatively different mechanisms. i. frequency response of vor and perceptual responses during translation and tilt. Journal of Neurophysiology, 94, 186–198. 
+
+Merfeld, D. M. (2011, May). Signal detection theory and vestibular thresholds: I. basic theory and practical considerations. Experimental Brain Research, 210(3–4), 389–405. 34 
+
+
+
+
+
+
+Newman, M., Lawson, B., Rupert, A., & McGrath, B. (2012, May). The role of perceptual modeling in the understanding of spatial disorientation during flight and ground-based simulator training. In Aiaa modeling and simulation technologies conference. Minneapolis. 
+
+
+
+Radomsky, A. S., Ouimet, A. J., Ashbaugh, A. R., Paradis, M. R., Lavoie, S. L., & O’Connor, K. P. (2006). Psychometric properties of the french and english versions of the claustrophobia questionnaire (cl). Journal of Anxiety Disorders, 20, 818–828. 
+
+
+
+Richerson, S. J., Faulkner, L. W., Robinson, C. J., Redfern, M. S., & Purucker, M. C. (2003). Acceleration threshold detection during short anterior and posterior perturbations on a translating platform. Gait & Posture, 18, 11–19. 
+
+Roditi, R. E., & Crane, B. T. (2012). Directional asymmetries and age effects in human self-motion perception. Journal of the Association for Research in Otolaryngology, 13, 381-401. 
+
+Rupert, A. H., Woo, G., Christopher, J., & Lawson, B. (2016, March). Countermeasures for loss of situation awareness: Spatial orientation modeling to reduce mishaps. In 2016 ieee aerospace conference (pp. 1–9). 
+
+ 
+
+Sjoberg, A. A. (1931). Experimentelle studien uber den auslosungs-mechanismus der seekrankeit. Acta Otolaryngol, Suppl. 14. 
+
+Soyka, F., Giordano, P. R., Barnett-Cowan, M., & Bulthoff, H. H. (2012). Modeling direction 35 discrimination thresholds for yaw rotations around an earth-vertical axis for arbitrary motion profiles. Exp Brain Res, 220, 89-99.
+
+
+
+Stoffregen, T., Pagulayan, R., Smart, L., & Bardy, B. (2003). On the nature and evaluation of fidelity in virtual environments. In L. Hettinger & M. Haas (Eds.), Virtual and adaptive environments (p. 111-128). CRC Press.
+
+Thompson, L., Lawson, B., Newman, M., McGrath, B., Brill, J., & Rupert, A. (2016, November). Design considerations and research needs for expanding the current perceptual model of spatial orientation into an in-cockpit spatial disorientation warning system (Tech. Rep. No. AD1031427). Fort Rucker, AL: Army Aeromedical Research Lab. 
+
+
+
+Vold, H., Crowley, J., & Rocklin, G. (1984). New ways of estimating frequency response functions. Sound and Vibration, 18, 34–38. 
+
+Zaichik, L., Rodchenko, V., Rufov, I., Yashin, Y., & White, A. (1999). Acceleration perception (Tech. Rep.). Portland, OR: In: American Institute of Aeronautics & Astronautics (AIAA) modeling and simulation technologies conference—a collection of technical papers. 
+
+Zupan, L. H., & Merfeld, D. M. (2008). Interaural self-motion linear velocity thresholds are shifted by roll vection. Exp Brain Res, 191, 505–511. 
+
+Zupan, L. H., Merfeld, D. M., & Darlot, C. (2002). Using sensory weighting to model the influence of canal, otolith and visual cues on spatial orientation and eye movements. Biological Cybernetics, 86(3), 209–230. 

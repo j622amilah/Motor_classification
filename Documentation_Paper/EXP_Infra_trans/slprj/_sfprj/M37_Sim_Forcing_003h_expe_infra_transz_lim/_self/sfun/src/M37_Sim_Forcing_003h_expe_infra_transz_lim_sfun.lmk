@@ -1,0 +1,90 @@
+CC     = "c:\program files (x86)\matlab\r2009b\sys\lcc\bin\lcc.exe"
+LD     = "c:\program files (x86)\matlab\r2009b\sys\lcc\bin\lcclnk.exe"
+LIBCMD = "c:\program files (x86)\matlab\r2009b\sys\lcc\bin\lcclib.exe"
+CFLAGS = -c -Zp8 -DMATLAB_MEX_FILE -noregistrylookup
+LDFLAGS = -s -dll -L"c:\program files (x86)\matlab\r2009b\sys\lcc\lib"
+LIBFLAGS = 
+
+OBJECTS = \
+	"M37_Sim_Forcing_003h_expe_infra_transz_lim_sfun.obj"\
+	"M37_Sim_Forcing_003h_expe_infra_transz_lim_sfun_registry.obj"\
+	"c1_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj"\
+	"c2_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj"\
+	"c3_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj"\
+	"c4_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj"\
+	"c5_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj"\
+	"c6_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj"\
+	"c7_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj"\
+	"c8_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj"\
+	"c9_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj"\
+	"c10_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj"\
+	"c11_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj"\
+	"c12_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj"\
+	"c13_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj"\
+	"c14_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj"\
+	"c19_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj"\
+	"c21_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj"\
+	"c23_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj"\
+	"c26_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj"\
+	"c27_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj"\
+	"lccstub.obj"\
+	"c:\program files (x86)\matlab\r2009b\sys\lcc\mex\lccdef.def"\
+	"c:\program files (x86)\matlab\r2009b\stateflow\c\debugger\lib\win32\sfc_debuglcc.lib"\
+	"c:\program files (x86)\matlab\r2009b\stateflow\c\mex\lib\win32\sfc_mexlcc.lib"\
+	"c:\program files (x86)\matlab\r2009b\extern\lib\win32\lcc\libmex.lib"\
+	"c:\program files (x86)\matlab\r2009b\extern\lib\win32\lcc\libmx.lib"\
+	"c:\program files (x86)\matlab\r2009b\extern\lib\win32\lcc\libfixedpoint.lib"\
+	"c:\program files (x86)\matlab\r2009b\extern\lib\win32\lcc\libut.lib"\
+	"c:\program files (x86)\matlab\r2009b\extern\lib\win32\lcc\libmwmathutil.lib"\
+	"c:\program files (x86)\matlab\r2009b\extern\lib\win32\lcc\libemlrt.lib"\
+	"c:\program files (x86)\matlab\r2009b\extern\lib\win32\lcc\libmwblascompat32.lib"\
+
+INCLUDE_PATH= -I"c:\program files (x86)\matlab\r2009b\sys\lcc\include"  -I"c:\program files (x86)\matlab\r2009b\extern\include"  -I"c:\program files (x86)\matlab\r2009b\simulink\include"  -I"c:\program files (x86)\matlab\r2009b\stateflow\c\mex\include"  -I"c:\program files (x86)\matlab\r2009b\stateflow\c\debugger\include" 
+ 
+
+M37_Sim_Forcing_003h_expe_infra_transz_lim_sfun.mexw32 : $(MAKEFILE) $(OBJECTS)
+	$(LD) $(LDFLAGS) -o M37_Sim_Forcing_003h_expe_infra_transz_lim_sfun.mexw32 @M37_Sim_Forcing_003h_expe_infra_transz_lim_sfun.lmko
+M37_Sim_Forcing_003h_expe_infra_transz_lim_sfun.obj :	"M37_Sim_Forcing_003h_expe_infra_transz_lim_sfun.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "M37_Sim_Forcing_003h_expe_infra_transz_lim_sfun.c"
+M37_Sim_Forcing_003h_expe_infra_transz_lim_sfun_registry.obj :	"M37_Sim_Forcing_003h_expe_infra_transz_lim_sfun_registry.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "M37_Sim_Forcing_003h_expe_infra_transz_lim_sfun_registry.c"
+c1_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj :	"c1_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c1_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+c2_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj :	"c2_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c2_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+c3_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj :	"c3_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c3_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+c4_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj :	"c4_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c4_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+c5_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj :	"c5_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c5_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+c6_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj :	"c6_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c6_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+c7_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj :	"c7_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c7_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+c8_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj :	"c8_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c8_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+c9_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj :	"c9_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c9_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+c10_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj :	"c10_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c10_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+c11_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj :	"c11_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c11_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+c12_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj :	"c12_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c12_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+c13_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj :	"c13_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c13_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+c14_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj :	"c14_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c14_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+c19_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj :	"c19_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c19_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+c21_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj :	"c21_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c21_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+c23_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj :	"c23_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c23_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+c26_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj :	"c26_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c26_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+c27_M37_Sim_Forcing_003h_expe_infra_transz_lim.obj :	"c27_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c27_M37_Sim_Forcing_003h_expe_infra_transz_lim.c"
+lccstub.obj :	"c:\program files (x86)\matlab\r2009b\sys\lcc\mex\lccstub.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c:\program files (x86)\matlab\r2009b\sys\lcc\mex\lccstub.c"
