@@ -1,0 +1,38 @@
+Angelaki et al, 2008    \cite{b1}
+Bellmann et al, 2011   \cite{b2}
+Bermudez-Rey et al, 2016   \cite{b3}
+Bles, 2008  \cite{b4}
+Bouchard et al, 2007  \cite{b5}
+Burkov, 2019   \cite{b6}
+Chaudhuri et al, 2013  \cite{b7}
+Cheung et al, 2000  \cite{b8}
+Denquin et al, 2021  \cite{b9}
+Gibb et al, 2010  \cite{b10}
+Gillingham, 1993  \cite{b11}
+Hartmann et al, 2014  \cite{b12}
+Karmali et al, 2017  \cite{b13}
+Kennedy et al, 1993  \cite{b14}
+Landrieu et al, 2017  \cite{b15}
+Melvill et al, 1978  \cite{b16}
+Newman et al, 2007  \cite{b17}
+Perdriel, 1980  \cite{b18}
+Previc et al, 2004  \cite{b19}
+
+\bibitem{b20} Radomsky, A. S., Ouimet, A. J., Ashbaugh, A. R., Paradis, M. R., Lavoie, S. L., and O’Connor, K. P. (2006). Psychometric properties of the french and english versions of the claustrophobia questionnaire (clq). \emph{Journal of Anxiety Disorders}, 20 (6), 818–828.
+
+\bibitem{b21} Radomsky, A. S., Rachman, S., Thordarson, D. S., McIsaac, H. K., and Teachman, B. A. (2001).  The claustrophobia questionnaire. \emph{Journal of Anxiety Disorders}, 15 (4), 287-297.
+
+Sargent et al, 2008  \cite{b22}
+Shadmehr, 2004  \cite{b23}
+Soyka et al, 2011 \cite{b24}
+Valko et al, 2012 \cite{b25}
+
+
+
+
+
+
+
+
+
+

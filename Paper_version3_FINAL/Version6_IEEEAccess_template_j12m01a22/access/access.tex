@@ -1,0 +1,228 @@
+%\documentclass{ieeeaccess}
+\documentclass[11pt, onecolumn]{article}
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+	
+\bibliographystyle{acm}		% Style of bibliography presentation
+
+\begin{document}
+
+% header on first page
+%\history{Date of publication xxxx 00, 0000, date of current version xxxx 00, 0000.}
+%\doi{10.1109/ACCESS.2017.DOI}
+
+\title{Simulation and Classification of Spatial Disorientation in a Flight use-case using Vestibular Stimulation}
+% \author{\uppercase{Jamilah Foucher}\authorrefmark{1}, \IEEEmembership{Member, IEEE},
+% \uppercase{Anne-Claire Collet}\authorrefmark{5}, \uppercase{Kevin Le Goff}\authorrefmark{3}, \uppercase{Thomas Rakotomamonjy}\authorrefmark{2}, \uppercase{Valerie Juppet}\authorrefmark{4}, \uppercase{Thomas Descatoire}\authorrefmark{4}, \uppercase{Jerémie Landrieu}\authorrefmark{1}, \uppercase{Marielle Plat-Robain}\authorrefmark{3}, \uppercase{François Denquin}\authorrefmark{1,2}, \uppercase{Arthur Grunwald}\authorrefmark{6}, \uppercase{Jean-Christophe Sarrazin}\authorrefmark{2}, and \uppercase{Benoît G. Bardy}.\authorrefmark{1}}
+% \address[1]{EuroMov Digital Health in Motion, Univ Montpellier and IMT Mines Ales, Montpellier 34090 France (e-mail: j622amilah@gmail.com)}
+% \address[2]{DTIS, ONERA, Salon de Provence 13300 France (e-mail: XX@XX.XX)}
+% \address[3]{AIRBUS, Toulouse 31000 France}
+% \address[4]{AIRBUS Helicopters, Marignane 13700 France}
+% \address[5]{Human Design Group, Toulouse 31000 France}
+% \address[6]{Technion, Israel Institute of Technology 32000 Israel}
+% \tfootnote{This project was supported by the French Department of Civil Aviation (DGAC) and by the European Union (FEDER iMOSE).}
+
+% \markboth
+% {Jamilah Foucher \headeretal: Preparation of Papers for IEEE TRANSACTIONS and JOURNALS}
+% {Benoît G. Bardy \headeretal: Preparation of Papers for IEEE TRANSACTIONS and JOURNALS}
+
+% \corresp{Corresponding author: First A. Author (e-mail: j622amilah@gmail.com).}
+
+\begin{abstract}
+In aeronautics, Spatial Disorientation (SD) includes situations in which the aviator fails to correctly perceive aircraft attitude, position or motion.  SD is often quantified in terms of task and accident use-case, making it difficult to develop a generalized and fundamental understanding of the occurrence of SD and viable solutions.  In order to investigate SD in a generalized manner, a comprehensive ergonomics study on SD in aviation was performed, including both experimentation and model prediction of SD.  Motion detection experimental methods were used to measure perceptual joystick response in different vestibular stimulation contexts, thus creating a generalized SD perception dataset.  Joystick response derived features, from the generalized SD perception dataset, were used to investigate Machine Learning (ML) parameter tuning selection for SD prediction.  Specifically, the motion detection experiments consisted of a vestibular whole-body rotational and translational compensatory tracking task, performed in a KUKA motion simulator under a naturalistic flight context. Using the generalized SD experimental dataset, five combinations of key ML modeling parameters were evaluated using averaged 5-fold prediction accuracy and Receiver Operating Characteristic Area Under the Curve (ROC-AUC); modeling parameters included number of features, eight model types, dataset conditions, feature type, and semi-supervised label type.  Additional measures of SD were investigated, for future ML feature usage, such as questionnaire based physical disorientation measured by the SSQ disorientation sub-scale questionnaire.  The perceptual SD dataset was statistically proven to be representative of human motion detection behavior, demonstrating that the simulation environment was sufficient to generate realistic piloting responses.  ML modeling comparison analysis demonstrated that SD can be accurately predicted regardless of the feature quantity used, however model type, specialized dataset models, feature type, and label type significantly influence prediction accuracy.  Finally, no significant relationship between physical disorientation and motion detection was found, indicating that two-sample before and after questionnaire based methods are insufficient to uncover correlations with perceptual disorientation; a more frequent physical disorientation measure is needed. This research demonstrates that SD can be studied and predicted in a generalized manner, and not necessarily by use-case, using general flight and human-related measures (e.g.; physical discomfort report) to monitor performance with respect to the task; successful ML modeling parameter tuning are reported.
+\end{abstract}
+
+% \begin{keywords}
+% Aircraft navigation, human computer interaction, joystick perceptual response, machine learning algorithms, motion detection, spatial disorientation, vestibular dead reckoning.
+% \end{keywords}
+
+% \titlepgskip=-15pt
+
+\maketitle
+
+\section{INTRODUCTION}
+\label{sec:introduction}
+% \PARstart{S}{patial} Disorientation (SD), in aviation, is the failure to perceive orientation, position, or movement. It is caused by multiple factors including environmental references and conditions, experience, and stress.  
+
+Spatial Disorientation (SD), in aviation, is the failure to perceive orientation, position, or movement. It is caused by multiple factors including environmental references and conditions, experience, and stress.  There are diverse types of SD symptoms, ranging from confusion to physical sickness, and currently there is no proven method or solution to prevent it (Bles, 2008; Gibb et al, 2010; Perdriel, 1980; Previc et al, 2004; Newman et al, 2007).  International studies on the frequency and severity of SD accidents show that the cause of 6-32% of major accidents are due to SD, similarly 15-26% of fatal accidents are a result of SD (Newman et al, 2007).  Recovery from SD is strongly connected to the pilot's awareness of the situation, and his/her ability to perform corrective control, despite the disorientation, to maintain aerodynamic stability; 80% and 20% of SD incidents are caused by unrecognized and recognized situations respectively (Bles, 2008).  Currently, SD is treated by educating pilots of the signs and symptoms of SD, and instructing them to fly below the physiological thresholds of the human vestibular system (Previc et al, 2004).  Treating SD has been challenging because SD is often defined with respect to a specific aeronautical context (Gillingham, 1993; Newman et al, 2007). SD definitions focus on flight performance errors but seldom include context independent behavior, perceptual, or physiological trends.  Due to the fact that SD is studied case-by-case in an aeronautical context, there is little general understanding of the onset of SD and orientation, position, or movement perception with respect to environmental references.  It would be of interest to study SD using a motion detection experimental paradigm, measuring SD in a general context with respect to whole-body orientation, position, speed, and perceptual feedback.  And, ultimately outlining a general framework for modeling and predicting the occurrence of SD based on perceptual feedback.
+
+Vibrations or motion, measured by the human vestibular system, contain important information about the environment and our orientation and position with respect to the environment.  Motion detection is the act of discerning self-motion with respect to a reference in the environment (Chaudhuri et al, 2013).  Human motion detection and perception is quantified, by stimulating the vestibular system systematically, via different vibrational and motion experimental paradigms (Angelaki et al, 2008). Initially, motion detection was quantified by observing at which directions and speeds, angular or linear, humans could perceive self-motion.  Experimental paradigms included the usage of different experimental conditions such as, acceleration amplitude, trajectory of stimuli, sequence and exposure time of movement and non-movement events, movement direction with respect to the orientation of the head, whole-body stimulation (Melvill et al, 1978).  Recent motion perception research has adopted robotic simulation tools and standardized experimental paradigms, including a greater range of motion test frequencies, allowing for more precise and consistent motion detection boundaries for a large variety of perceptual situations.  Additionally, vestibular motion perception studies investigate context-driven parameters, such as: 1) stimuli direction, rate, and acceleration, 2) vestibular dysfunction vs control detection, 3) orientation and/or movement of the user's body during exposure to stimuli, 4) expertise vs novice detection, 5) user age.  Depending on the context parameters and the stimuli trajectory, the vestibular-proprioceptive system detects motion differently and thus behavioral responses are different (Soyka et al, 2011; Valko et al, 2012; Hartmann et al, 2014; Bermudez-Rey et al, 2016; Karmali et al, 2017).  For SD applications, the observed values where humans could not perceive correct self-motion, called vestibular thresholds, were used as an indicator to be aware of SD (Gillingham et al, 1993; Previc et al, 2004).  However, it remains uncertain how to reliably use thresholds to assist with SD in a functional aviation context.
+
+In an online flight context, it is more accurate to predict states of disorientation from modeled physiological or movement signatures than using vestibular thresholds.  Thus, instead of applying perceptual threshold values from motion detection research to SD research, as was done in the past within aviation, SD researchers are beginning to conduct motion detection experiments using realistic flight scenarios.  For instance, directional perception was investigated in a realistic helicopter task where participants were asked to point towards the sky to demonstrate a non-SD state (Cheung et al, 2000).  Similarly, continuous heading detection was investigated using a compensatory task such that perceived heading was measured with respect to a remembered target (Sargent et al, 2008).  Most recently, the individual and interactive influence of optical and gravito-inertial stimuli during simulated Low-Altitude Flight demonstrated the importance of sensory integration effects of on height perception (Denquin et al, 2021).  These applied studies are useful and give insightful information about motion perception in realistic contexts.  There is a need for more psychophysical SD motion perception studies using an ergonomics approach, where the results can be generalized and directly used in the field of aviation.
+
+In this study, we investigate SD by using : 1) motion perception experimental methods to create a generalized SD occurrence dataset containing a perceptual feedback measure, 2) statistical and Machine Learning (ML) methods to identify optimal modeling parameters for predicting SD.  During the dataset creation phase, we used existing motion detection experimental design methodologies, and designed a generalized motion detection experiment.  A vestibular whole-body compensatory task in darkness was used to produce realistic motion cues that a pilot might experience, where motion detection behavior was recorded via joystick movements.  Two experiments were conducted, a rotational and translational motion detection task.  The rotational and translational experiments administered angular and linear whole-body stimulation, around and along the 3 Cartesian coordinate frame axes, respectively.  Participants were given randomized combinations of three parameters that created the angular or linear motion stimuli: axis, direction along the axis, and speed.  A motion simulation system was used to administer whole-body stimulation.  The goal of phase 1 was to create a realistic and diverse dataset of perceptual joystick motion with respect to the occurrence of SD.  The motivation of the dataset creation phase was not to identify vestibular thresholds and report corresponding behavior, but to recreate realistic flight response data in a controlled manner such that states of disorientation could be modeled.  It was necessary to first recreate a motion detection experiment based on previous research before SD could be investigated and modeled, because there were no public datasets of a naturalistic piloting task that denoted the occurrence of SD while containing a perceptual feedback measure.  Despite the advent of public datasets, such as Google Cloud and Kaggle, psychophysical experimental data for a specific context are rare or unavailable.  Next, using the generalized SD dataset, machine learning methods were chosen for SD modeling because their reliable and effective predictive capabilities (Burkov, 2019).  During the comprehensive modeling parameter search phase, we 1) categorized participant response into 4 profiles, 2) created 3 semi-supervised labels from the profiles for identifying SD-state, 3) created six unique features from the perceptual joystick feedback measure, 4) compared test set prediction accuracy and Receiver Operating Characteristic Area Under the Curve (ROC-AUC) for five key modeling parameters: number of features, 8 model types, dataset conditions, feature type, semi-supervised label type.  ML modeling parameter combinations were identified for accurate prediction of SD.  The goal of phase 2 was to create a ML model parameter selection guide for SD prediction, such that SD researchers in aviation can readily use these proven parameters with real flight data.  Finally, the relationship between physical sickness symptoms and motion disorientation were investigated to identify potential physical markers for SD; physical sickness was quantified using a generalized disorientation test for humans called the Simulator Sickness Questionnaire (SSQ) (Kennedy et al, 1993; Bouchard et al, 2007).  We hypothesized that participants who correctly detected motion, implying they do not have SD, will additionally not have physical sickness.
+
+\subsection{MOTION DETECTION EXPERIMENTATION}
+The rotational and translational SD motion detection experiments were identically designed such that the resulting SD dataset would be in a standard format.  The following experimental parameters were the same for both experiments: experimental stimuli conditions, number of randomized trials per experiment, timeline of experimental events per trial, experimental protocol, motion simulation system.  In order to create a diverse dataset of vestibular and proprioceptive SD response, perceptual response was measured using a 3x3 block design testing a randomized combination of angular or linear axis motion, axial direction, and speed.  32 total participants participated, in both experiments, receiving the same experimental instructions and protocol while using the motion simulator.
+
+\subsubsection{EXPERIMENTAL DESIGN}
+The axis experimental condition had three parameters, cabin movements for rotation were roll (RO), pitch (PI), and yaw (YA), and translation included left/right (LR), forward/backward (FB), and up/down (UD).  In addition, minuscule sinusoidal vibrational noise, 1-2cm in amplitude, was added to the non-stimulated axes to mask the sound of the motor for the selected stimulus.  Due to the fact that vibrational noise was present, participants were exposed to a more realistic aviation environment.  Furthermore, the additional vibration helped to reduce movement detection thresholds such that the task was realistically challenging (Chaudhuri et al, 2013).  The axial direction experimental condition had two parameters denoting positive and negative direction.  Figure 1A depicts both axis and axial direction convention for both rotational and translational experiments.  Finally, the speed experimental condition had two parameters, a slow near sub-threshold (sub) speed where motion is difficult to detect and a fast near supra-threshold (sup) speed where motion detection is apparent.  In motion detection literature, our speed parameters are known as motion detection thresholds measured in terms of frequency, using deg/s or cm/s depending on whether the stimulus motion is in rotation or translation respectively.  The speed parameters required special selection such that values would be in alignment with motion detection thresholds and accommodate the motion constraints of the simulation system.  For both rotational and translation experiments, a range of sub and sup speed values were selected from motion detection literature (Previc et al, 2004; Melvill et al, 1978; Hartmann et al, 2014).  A calibration phase was conducted with 23 naive participants, where the literature speed values were tested using the motion simulator system.  In the calibration phase, participant’s sat naturally in the simulator and verbally reported which direction they believed that they were moving directly after randomized motion stimulation.  For the rotational experiment, the chosen sub and sup speed that reported the largest number of correct responses was 0.5 Hz (deg/s) and 1.25 Hz (deg/s) respectively.  Similarly for the translational experiment, the chosen sub and sup speed was 3.75 Hz (cm/s) and 15 Hz (cm/s) respectively.  Method and procedure for threshold selection are detailed in Supplementary Materials.
+
+FIGURE 1
+
+A single trial was composed of four different phases, as denoted by the timeline in Figure 2, where participants were tasked to respond to specific visual and vestibular stimuli per phase.  During both phase A and B, participants could move the simulator using the joystick in any of the rotational or translational axes to counteract the perturbation.
+
+FIGURE 2
+
+    • Phase A Detection:  A smoothed ramp forcing function, where the rate of displacement was unknown to the participants, slowly and continuously perturbed one of the three rotational or translational axes of the simulator cabin at a sub or sup rate.  The acceleration profile was the derivative of the position trajectory shown as the blue and red lines in Figure 2.  During phase A participants were tasked to perform "initial detection", which consisted of identifying the axis and direction of the felt perturbation and manipulating an aviation joystick (Thrustmaster Hotas Warthog joystick), shown in Figure 1B, in the opposite direction of the stimuli.  Participants had 15-20s to detect motion depending on the condition, denoted by T1 in Figure 2, which corresponded to the cabin reaching the maximum allowed cabin displacement.  T1 was different for every axis and experiment because sub and sup rates were different for each experiment and the physical cabin displacement range was different for each axis.  In particular, the rotational experiment had slightly longer stimulation times than the translational experiment because the sub and sup rates were slower and the available cabin displacement in the RO, PI, YA orientations were larger than the available translational displacement ranges.  If participants did not respond within T1s during phase A, the cabin automatically displaced along one of the three axes as the ramp function increased until it reached T1s, where upon the ramp function maintained a zero slope causing the cabin to remain stationary for 2s.
+    • Phase B Active control: If participants responded within T1 seconds during phase A, phase B active control began and they had 15s to maintain the simulator orientation or position stably at the initial location by counteracting the perturbation.  No visual stimulation was present, thus participants could only rely upon vestibular and proprioceptive cues.
+    • Phase C Reintialization: A red dot appeared on the screen instructing participants to release the joystick and rest, while the cabin automatically returned to the initial starting location in 10s. 
+    • Phase D Rest: The cabin remained stationary at the starting location for 5s in order to avoid possible over stimulation or after effects.
+
+Figure 2A and 2B each show a typical trajectory when the participant did not respond and when the participant responded during phase A respectively, demonstrating that experimental phases and trial length were dependent upon the participant’s initial response.  The shortest and longest length trial was approximately 32s and 50s respectively.  The shortest length trial would occur if T1=15s and the participant immediately responded (2s+15s+10s+5s) or did not respond  (T1=15s+2s+10s+5s), the longest length trial would occur if T1=20s where the participant responded just before T1 equaled 20s (19.9s+15s+10s+5s).
+
+Both experiments administered 42 trials, 12 familiarization practice and 30 experimental trials.  During the familiarization practice phase, unique experimental condition combinations were given where each of the 3 axes were stimulated in negative or positive directions at sub or sup speeds.  Similarly, the experimental phase consisted of 30 randomized trials, such that 15 trials with unique experimental conditions were repeated twice; 5 direction-speed conditions (negative sup, negative sub, no-movement, positive sup, positive sub) for each of the 3 axes (RO/LR, PI/FB, YA/UD).  No-movement trials were included as sham trials to encourage participants to remain active.
+
+\subsubsection{PARTICIPANTS}
+18 and 14 healthy volunteers with normal or corrected vision, and no particular flight experience performed the rotational and translational near sub-threshold tasks (males and females, 32±10 SD years old): 4 of the 32 participants reported having novice time-limited (45 minutes, 2 hours, 40 hours, 45 hours) piloting experiences. 4 of the 18 rotational and 4 of the 14 translational participants were over the age of 40. The participants that performed the rotational experiment were not the same as participants that performed the translational experiment. Therefore, there were no confounds due to experimental ordering, learning, carryover, or fatigue. The same participant population, university students and personal, were used for both experiments therefore it is likely that both experimental populations were similar.
+
+\subsubsection{EXPERIMENTAL PROTOCOL AND MOTION SIMULATION SYSTEM}
+The experiment took approximately 90 minutes and consisted of four sections: (1) arrival/ questionnaires/ instruction, (2) familiarization, (3) active control of rotational or translational stimulation, (4) questionnaire/discussion.  After describing the experimental task and the completion of the questionnaires, participants were securely installed, using the safety harness and communication headphones, as shown in Figure 3A. They were asked to moderately move the joystick in one axis direction at a time while compensating the unknown perturbation.  Participants were reminded to maintain the cabin at the initial trial position or orientation by compensating the motion stimulus.  The reaction time and/or strategy that participants adopted were chosen by the participants, no instruction was given regarding response quickness or accuracy.  In order to replicate a realistic flight scenario, participants were free to move their head and body, looking and/or fixating where they wished, as long as it did not interfere with the task.  Once the participant was installed in the cabin, the cabin door was closed and all communication between the participant and experimenter were performed via a camera interface system which facilitated two-way auditory visual communication. The physical well-being of the participants was monitored, the experiment ended if participants showed signs of physical illness.
+
+FIGURE 3
+
+The motion simulation system, that provided sensory stimulation, iMose, consisted of a 6-degree-of-freedom position controlled KUKA-based motion simulator system (KR 500-3 MT adapted by BEC GmbH motion simulators, KUKA Roboter GmbH, Germany) and a closed-network of three independent workstations (Denquin et al, 2021; Landrieu et al, 2017; Bellmann et al, 2011).  Figures 3B and 3C show the interior and exterior of the simulation system, data was transferred between the KUKA and Workstations at 250Hz on a private UDP protocol network.  Workstation 1 and 3 were located in another room, where workstation 1 generated motion for the KUKA robot using a Matlab/Simulink control interface program (MATLAB and Simulink Toolbox Release 2009, The MathWorks, Inc., Natick, Massachusetts, USA).  Workstation 2 was fixed to the simulator cabin, it administered the red dot or black visual screen and registered joystick motion.  Workstation 3, using Labview, served as the experimenter user control interface to start and stop the experiment, and collect experimental data without causing information delays between the workstations.
+
+\subsection{ANALYSIS}
+As previously mentioned, the goal of this study was to create a realistic flight dataset of moments of disorientation and non-disorientation measured by joystick motion, and then identify the best methods for predicting SD using machine learning methods.  Performed analysis methodologies were: 1) verifying the correctness and authenticity of the dataset in a categorical manner, 2) evaluating ML modeling parameters for SD classification using three metrics, 3) correlating physical with perceptual disorientation to confirm if other possible measures besides joystick could convey markers for the occurrence of human SD-state.  Python was used for all analyses, using packages numpy, pandas, scipy, sklearn, seaborn/plotly/matplotlib  (Python 3.9, Python Software Foundation, Fredericksburg, Virginia, USA).
+
+\subsubsection{VERIFICATION OF SIMULATION DATASET}
+All 42 trials, familiarization and experimental trials, were used in order to maximize data usage.  Simulator system motion and participant joystick responses were down-sampled from 250Hz to 10Hz for data analyses, such that only relevant human motor movements were considered; literature has shown that human hand and arm movements do not exceed frequencies of 10Hz (Shadmehr, 2004).
+
+Next, data standardization pre-processing analysis was performed to ensure that the experiment functioned correctly for all trials and participants.  In order to conform with the experimental design, joystick responses needed to influence the correct cabin axes within a window of a few seconds.  Trials where the joystick response did not follow the experimental design due to real-time system delays were removed; 40% of rotational and 50% of translational trial data was removed from the analysis.  Data standardization was the only step that removed trial data, trials that passed data standardization were used in data analysis even if it was a familiarization trial where participants had less practice.  See the Supplementary materials section for the steps used to standardize the data.
+
+
+
+
+
+\section{Reference}
+\bibliography{bib}
+% \begin{thebibliography}{00}
+
+% \bibitem{b1} Angelaki, D. E., and Cullen, K. E. (2008). Vestibular system: The many facets of a multimodal sense. \emph{Annu Rev Neurosci}, 31 (1), 125-150.
+
+% \bibitem{b2} Bellmann, T., Heindl, J., Hellerer, M., Kuchar, R., Sharma, K., and Hirzinger, G. (2011). The dlr robot motion simulator part i: Design and setup. In 2011 \emph{IEEE} international conference on robotics and automation (pp. 4694–4701).
+
+% \bibitem{b3} Bermudez-Rey, M. C., Clark, T. K., Wang, W., Leeder, T., Bian, Y., and Merfeld, D. M. (2016).  Vestibular perceptual thresholds increase above the age of 40. \emph{Frontiers in Neurology}, 7 , 162.
+
+% \bibitem{b4} Bles, W. (2008). Spatial disorientation training demonstration and avoidance.
+
+% \bibitem{b5} Bouchard, S., Robillard, G., and Renaud, P. (2007). Revising the factor structure of the simulator sickness questionnaire. \emph{Annual Review of CyberTherapy and Telemedicine}, 5 , 117-122.
+
+% \bibitem{b6} Burkov, A. (2019). The hundred-page machine learning book. Andriy Burkov Canada.
+
+% \bibitem{b7} Chaudhuri, S. E., Karmali, F., and Merfeld, D. M. (2013). Whole body motion-detection tasks can yield much lower thresholds than direction-recognition tasks: implications for the role of vibration. \emph{J Neurophysiol}, 110 (12), 2764–2772.
+
+% \bibitem{b8} Cheung, B., Hofer, K., Brooks, C. J., and Gibbs, P. (2000). Underwater disorientation as induced by two helicopter ditching devices. \emph{Aviation, Space, and Environmental Medicine}, 71 (9), 879–888.
+
+% \bibitem{b9} Denquin, F., Foucher, J., Pla, S., Sarrazin, J.-C., and Bardy, B. G. (2021). Optical and gravito-inertial contributions to the perception and control of height in a simulated low-altitude flight context. \emph{Ergonomics}, 64 (10), 1297–1309.
+
+% \bibitem{b10} Gibb, R., Gray, R., and Scharff, L. (2010). Aviation visual perception: Research, misperception and mishaps. Ashgate.
+
+% \bibitem{b11} Gillingham, K. K., and Previc, F. H. (1993). Spatial orientation in flight (Tech. Rep. No. AL-TR-1993-0022).
+
+% \bibitem{b12} Hartmann, M., Haller, K., Moser, I., Hossner, E.-J., and Mast, F. W. (2014). Direction detection thresholds of passive self-motion in artistic gymnasts. \emph{Exp Brain Res}, 232 (4), 1249–1258.
+
+% \bibitem{b13} Karmali, F., Bermudez Rey, M. C., Clark, T. K., Wang, W., and Merfeld, D. M. (2017). Multivariate analyses of balance test performance, vestibular thresholds, and age. \emph{Frontiers in Neurology}, 8 , 578.
+
+% \bibitem{b14} Kennedy, R. S., Lane, N. E., Berbaum, K. S., and Lilienthal, M. G. (1993). Simulator sickness questionnaire: An enhanced method for quantifying simulator sickness. \emph{International Journal of Aviation Psychology}, 3 (3), 203-220.
+
+% \bibitem{b15} Landrieu, J., Abdur-Rahim, J., Sarrazin, J.-C., and Bardy, B. (2017). Time-to-collision estimates during congruent visuo-vestibular stimulations. In Studies in perception and action xiv: Nineteenth international conference on perception and action (ipca) (pp. 109–112).
+
+% \bibitem{b16} Melvill, J. G., and Young, L. R. (1978). Subjective detection of vertical acceleration: a velocity dependent response. \emph{Acta Otolaryngol}, 85 , 45—53.
+
+% \bibitem{b17} Newman, D. G., and FAICD, A. (2007). An overview of spatial disorientation as a factor in aviation accidents and incidents (No. B2007/0063). Australian Transport Safety Bureau Canberra City, Australia.
+
+% \bibitem{b18} Perdriel, G., and Benson, A. J. (1980). Spatial disorientation in flight: Current problems (Tech. Rep.). Advisory Group for Aerospace Research and Development Neuilly-sur-Seine (France).
+
+% \bibitem{b19} Previc, F. H., and Ercoline, W. R. (2004). Spatial disorientation in aviation. Reston ,VA: American Institute of Aeronautics and Astronautics.
+
+% \bibitem{b20} Radomsky, A. S., Ouimet, A. J., Ashbaugh, A. R., Paradis, M. R., Lavoie, S. L., and O’Connor, K. P. (2006). Psychometric properties of the french and english versions of the claustrophobia questionnaire (clq). \emph{Journal of Anxiety Disorders}, 20 (6), 818–828.
+
+% \bibitem{b21} Radomsky, A. S., Rachman, S., Thordarson, D. S., McIsaac, H. K., and Teachman, B. A. (2001).  The claustrophobia questionnaire. \emph{Journal of Anxiety Disorders}, 15 (4), 287-297.
+
+% \bibitem{b22} Sargent, J., Dopkins, S., Philbeck, J., and Arthur, J. (2008). Exploring the process of progressive disorientation. \emph{Acta Psychol}, 129 (2), 234–242.
+
+% \bibitem{b23} Shadmehr, R., and Wise, S. P. (2004). The computational neurobiology of reaching and pointing: a foundation for motor learning. MIT press.
+
+% \bibitem{b24} Soyka, F., Giordano, P. R., Beykirch, K., and Bulthoff, H. H. (2011). Predicting direction detection thresholds for arbitrary translational acceleration profiles in the horizontal plane. \emph{Exp Brain Res}, 209 (1), 95–107.
+
+% \bibitem{b25} Valko, Y., Lewis, R. F., Priesol, A. J., and Merfeld, D. M. (2012). Vestibular labyrinth 784 contributions to human whole-body motion discrimination. \emph{J Neurosci}, 32 (39), 13537–13542.
+
+% \end{thebibliography}
+
+
+% \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{a1.png}}]{First A. Author} (M'76--SM'81--F'87) and all authors may include 
+% biographies. Biographies are often not included in conference-related
+% papers. This author became a Member (M) of IEEE in 1976, a Senior
+% Member (SM) in 1981, and a Fellow (F) in 1987. The first paragraph may
+% contain a place and/or date of birth (list place, then date). Next,
+% the author's educational background is listed. The degrees should be
+% listed with type of degree in what field, which institution, city,
+% state, and country, and year the degree was earned. The author's major
+% field of study should be lower-cased. 
+
+% The second paragraph uses the pronoun of the person (he or she) and not the 
+% author's last name. It lists military and work experience, including summer 
+% and fellowship jobs. Job titles are capitalized. The current job must have a 
+% location; previous positions may be listed 
+% without one. Information concerning previous publications may be included. 
+% Try not to list more than three books or published articles. The format for 
+% listing publishers of a book within the biography is: title of book 
+% (publisher name, year) similar to a reference. Current and previous research 
+% interests end the paragraph. The third paragraph begins with the author's 
+% title and last name (e.g., Dr.\ Smith, Prof.\ Jones, Mr.\ Kajor, Ms.\ Hunter). 
+% List any memberships in professional societies other than the IEEE. Finally, 
+% list any awards and work for IEEE committees and publications. If a 
+% photograph is provided, it should be of good quality, and 
+% professional-looking. Following are two examples of an author's biography.
+% \end{IEEEbiography}
+
+% \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{a2.png}}]{Second B. Author} was born in Greenwich Village, New York, NY, USA in 
+% 1977. He received the B.S. and M.S. degrees in aerospace engineering from 
+% the University of Virginia, Charlottesville, in 2001 and the Ph.D. degree in 
+% mechanical engineering from Drexel University, Philadelphia, PA, in 2008.
+
+% From 2001 to 2004, he was a Research Assistant with the Princeton Plasma 
+% Physics Laboratory. Since 2009, he has been an Assistant Professor with the 
+% Mechanical Engineering Department, Texas A{\&}M University, College Station. 
+% He is the author of three books, more than 150 articles, and more than 70 
+% inventions. His research interests include high-pressure and high-density 
+% nonthermal plasma discharge processes and applications, microscale plasma 
+% discharges, discharges in liquids, spectroscopic diagnostics, plasma 
+% propulsion, and innovation plasma applications. He is an Associate Editor of 
+% the journal \emph{Earth, Moon, Planets}, and holds two patents. 
+
+% Dr. Author was a recipient of the International Association of Geomagnetism 
+% and Aeronomy Young Scientist Award for Excellence in 2008, and the IEEE 
+% Electromagnetic Compatibility Society Best Symposium Paper Award in 2011. 
+% \end{IEEEbiography}
+
+% \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{a3.png}}]{Third C. Author, Jr.} (M'87) received the B.S. degree in mechanical 
+% engineering from National Chung Cheng University, Chiayi, Taiwan, in 2004 
+% and the M.S. degree in mechanical engineering from National Tsing Hua 
+% University, Hsinchu, Taiwan, in 2006. He is currently pursuing the Ph.D. 
+% degree in mechanical engineering at Texas A{\&}M University, College 
+% Station, TX, USA.
+
+% From 2008 to 2009, he was a Research Assistant with the Institute of 
+% Physics, Academia Sinica, Tapei, Taiwan. His research interest includes the 
+% development of surface processing and biological/medical treatment 
+% techniques using nonthermal atmospheric pressure plasmas, fundamental study 
+% of plasma sources, and fabrication of micro- or nanostructured surfaces. 
+
+% Mr. Author's awards and honors include the Frew Fellowship (Australian 
+% Academy of Science), the I. I. Rabi Prize (APS), the European Frequency and 
+% Time Forum Award, the Carl Zeiss Research Award, the William F. Meggers 
+% Award and the Adolph Lomb Medal (OSA).
+% \end{IEEEbiography}
+
+% \EOD
+
+\end{document}

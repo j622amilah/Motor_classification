@@ -1,0 +1,43 @@
+
+I. INTRODUCTION
+
+II. MOTION DETECTION EXPERIMENTATION
+A. EXPERIMENTAL DESIGN
+B. PARTICIPANTS
+C. EXPERIMENTAL PROTOCOL AND MOTION SIMULATION SYSTEM
+
+III. ANALYSIS
+A. VERIFICATION OF SIMULATION DATASET
+B. RESPONSE CATEGORIZATION
+C. MOTION DETECTION AND PERFORMANCE SUMMARY
+D. CLASSIFICATION MODEL EVALUATION
+E. PHYSICAL DISORIENTATION
+
+
+IV. RESULTS
+A. MOTION DETECTION PERFORMANCE
+1) Detection: speed comparison (within axis condition)
+2) Detection: axes comparisons (across axes per speed condition)
+B. MOTION DETECTION PERFORMANCE RANK
+C. SD CLASSIFICATION
+D. MOTION DETECTION PERFORMANCE AND PHYSICAL DISORIENTATION
+
+
+V. DISCUSSION
+
+
+REFERENCES
+
+
+
+
+Times New Roman
+Helvetica
+
+Table Title = Times New Roman - All caps - 8pt
+Figure caption = Fig Caption  (Helvetica  7pt  bold)
+
+Largeur : 8,75 cm
+Hauteur : 6,62 cm
+
+The classification experiments required that five key modeling parameters be evaluate: number of features, model type, dataset conditions, feature type, semi-supervised label type. Model, feature, and semi-supervised label type were defined using human movement and SD domain specific information.
