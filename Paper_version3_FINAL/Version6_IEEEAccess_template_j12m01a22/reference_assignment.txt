@@ -1,38 +1,49 @@
-Angelaki et al, 2008    \cite{b1}
-Bellmann et al, 2011   \cite{b2}
-Bermudez-Rey et al, 2016   \cite{b3}
-Bles, 2008  \cite{b4}
-Bouchard et al, 2007  \cite{b5}
-Burkov, 2019   \cite{b6}
-Chaudhuri et al, 2013  \cite{b7}
-Cheung et al, 2000  \cite{b8}
-Denquin et al, 2021  \cite{b9}
-Gibb et al, 2010  \cite{b10}
-Gillingham, 1993  \cite{b11}
-Hartmann et al, 2014  \cite{b12}
-Karmali et al, 2017  \cite{b13}
-Kennedy et al, 1993  \cite{b14}
-Landrieu et al, 2017  \cite{b15}
-Melvill et al, 1978  \cite{b16}
-Newman et al, 2007  \cite{b17}
-Perdriel, 1980  \cite{b18}
-Previc et al, 2004  \cite{b19}
+[1] W. Bles, “Spatial disorientation training demonstration and avoidance,” North Atlantic Treaty Organisation (NATO), Soesterberg, Netherlands.  Rep. no., TR-HFM-118, 2008.
 
-\bibitem{b20} Radomsky, A. S., Ouimet, A. J., Ashbaugh, A. R., Paradis, M. R., Lavoie, S. L., and O’Connor, K. P. (2006). Psychometric properties of the french and english versions of the claustrophobia questionnaire (clq). \emph{Journal of Anxiety Disorders}, 20 (6), 818–828.
+[2] R. Gibb, R. Gray, and L. Scharff, “Spatial disorientation—cues, illusions and misperceptions,” in Aviation visual perception: Research, misperception and mishaps. Farnham, Surrey, UK and Burlington, VT, USA: Ashgate, 2010.
 
-\bibitem{b21} Radomsky, A. S., Rachman, S., Thordarson, D. S., McIsaac, H. K., and Teachman, B. A. (2001).  The claustrophobia questionnaire. \emph{Journal of Anxiety Disorders}, 15 (4), 287-297.
+[3] G. Perdriel and A. J. Benson, “Spatial disorientation in flight: current problems,” Advisory Group for Aerospace Research and Development, Neuilly-sur-Seine, France.  Rep. no., AGARD-CP-287, 1980.
 
-Sargent et al, 2008  \cite{b22}
-Shadmehr, 2004  \cite{b23}
-Soyka et al, 2011 \cite{b24}
-Valko et al, 2012 \cite{b25}
+[4] K. K. Gillingham and F. H. Previc, “Spatial orientation in flight,” Armstrong Laboratory, Brooks Air Force Base, TX, USA. Rep. no., AL-TR-1993-0022, 1993.
 
+[5] F. H. Previc and W. R. Ercoline, Spatial disorientation in aviation, Reston,VA, USA: American Institute of Aeronautics and Astronautics, 2004.
+ 
+[6] D. G. Newman and A. FAICD, “An overview of spatial disorientation as a factor in aviation accidents and incidents,” Australian Transport Safety Bureau, Canberra City, Australia.  Rep. no., B2007/0063, 2007.
 
+[7] S. E. Chaudhuri, F. Karmali, and D. M. Merfeld, “Whole body motion-detection tasks can yield much lower thresholds than direction recognition tasks: implications for the role of vibration,” J Neurophysiol, vol. 110, no. 12, pp. 2764-2772, 2013.
 
+[8] D. E. Angelaki and K. E. Cullen, “Vestibular system: the many facets of a multimodal sense,” Annu Rev Neurosci, vol. 31, no. 1, pp. 125-150, 2008.
 
+[9] J. G. Melvill and L. R. Young, “Subjective detection of vertical acceleration: a velocity-dependent response,” Acta Otolaryngol, vol. 85, p. 45-53, 1978.
 
+[10] F. Soyka, P. R. Giordano, K. Beykirch, and H. H. Bülthoff, “Predicting direction detection thresholds for arbitrary translational acceleration profiles in the horizontal plane,” Exp Brain Res, vol. 209, no. 1, pp. 95–107, 2011.
 
+[11] Y. Valko, R. F. Lewis, A. J. Priesol, and D. M. Merfeld, “Vestibular labyrinth contributions to human whole-body motion discrimination,” J Neurosci, vol. 32, no. 39, pp. 13537–13542, 2012.
 
+[12] M. Hartmann, K. Haller, I. Moser, E.-J. Hossner, and F. W. Mast, “Direction detection thresholds of passive self-motion in artistic gymnasts,” Exp Brain Res, vol. 232, no. 4, pp. 1249–1258, 2014.
 
+[13] M. C. Bermúdez-Rey, T. K. Clark, W. Wang, T. Leeder, Y. Bian, and D. M. Merfeld, “Vestibular perceptual thresholds increase above the age of 40,” Front. Neurol., vol. 7, no. 162, 2016.
 
+[14] F. Karmali, M. C. Bermúdez Rey, T. K. Clark, W. Wang, and D. M. Merfeld, “Multivariate analyses of balance test performance, vestibular thresholds, and age,” Front. Neurol., vol. 8, no. 578, 2017.
 
+[15] B. Cheung, K. Hofer, C. J. Brooks, and P. Gibbs, “Underwater disorientation as induced by two helicopter ditching devices,” Aviat Space Environ Med , vol. 71, no. 9, pp. 879–888, 2000.
+
+[16] J. Sargent, S. Dopkins, J. Philbeck, and J. Arthur, “Exploring the process of progressive disorientation,” Acta Psychol, vol. 129, no. 2, pp. 234–242, 2008.
+
+[17] F. Denquin, J. Foucher, S. Pla, J.-C. Sarrazin, and B. G. Bardy, “Optical and gravito-inertial contributions to the perception and control of height in a simulated low-altitude flight context,” Ergonomics, vol. 64, no. 10, pp. 1297–1309, 2021.
+
+[18] A. Burkov, The hundred-page machine learning book. Quebec City, Canada: Andriy Burkov, 2019.
+
+[19] R. S. Kennedy, N. E. Lane, K. S. Berbaum, and M. G. Lilienthal, “Simulator sickness questionnaire: an enhanced method for quantifying simulator sickness,” Int J Aviat Psychol, vol. 3, no. 3, pp. 203–220, 1993.
+
+[20] S. Bouchard, G. Robillard, and P. Renaud, “Revising the factor structure of the simulator sickness questionnaire,” Annu. Rev. CyberTherapy Telemed., vol. 5, pp. 117–122, 2007.
+
+[21] J. Landrieu, J. Abdur-Rahim, J.-C. Sarrazin, and B. Bardy, “Time-to-collision estimates during congruent visuo-vestibular stimulations,” in Studies in Perception and Action XIV: Nineteenth International Conference on Perception and Action (IPCA), Seoul, Korea, 2017, pp. 109-112.
+
+[22] T. Bellmann, J. Heindl, M. Hellerer, R. Kuchar, K. Sharma, and G. Hirzinger, “The DLR robot motion simulator part i: design and setup,” in IEEE International Conference on Robotics and Automation, Shanghai, China, 2011, pp. 4694-4701.
+
+[23] A. S. Radomsky, S. Rachman, D. S. Thordarson, H. K. McIsaac, and B. A. Teachman, “The claustrophobia questionnaire,” J. Anxiety Disord., vol. 15, no. 4, pp. 287-297, 2001.
+
+[24] A. S. Radomsky, A. J. Ouimet, A. R. Ashbaugh, M. R. Paradis, S. L. Lavoie, and K. P. O’Connor, “Psychometric properties of the french and english versions of the claustrophobia questionnaire (CLQ),” J. Anxiety Disord., vol. 20, no. 6, pp. 818–828, 2006.
+
+[25] R. Shadmehr and S. P. Wise, The computational neurobiology of reaching and pointing: a foundation for motor learning. Cambridge, MA, USA and London, UK: MIT press, 2004.

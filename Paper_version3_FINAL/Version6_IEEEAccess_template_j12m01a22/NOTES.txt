@@ -1,0 +1,9 @@
+notes
+
+
+To change the dpi of each image:
+Gimp : Image > Print Size > change the dpi
+
+
+
+

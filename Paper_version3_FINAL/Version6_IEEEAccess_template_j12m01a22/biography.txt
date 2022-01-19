@@ -1,0 +1,28 @@
+Name is Helvetica;Arial   8pt bold   AU_Bios
+
+Text is Times New Roman   8pt AU_Bios
+
+
+JAMILAH FOUCHER (M’2016) became a Member (M) of IEEE in 2016.  Jamilah received a B.S. degree in electrical engineering from the State University of Binghamton, New York in 2003 and PhD. degree in mechanical engineering from University of California, Santa Barbara with emphasis in control theory, dynamical systems, and numerical analysis in 2012; with application to neuroscience and psychophysical experimentation.  She is currently a Data Scientist, a member of Sigma Xi, and a member of the Frontiers Neuroergonomics Editorial Board serving as Topic coordinator for a methods and applications series.
+
+ANNE-CLAIRE COLLET 
+
+KEVIN LE GOFF
+
+THOMAS RAKOTOMAMONJY
+
+VALERIE JUPPET
+
+THOMAS DESCATOIRE
+
+JERÉMIE LANDRIEU received a M.S. in mechanical engineering and PhD in Computer Graphics with emphasis in Virtual Reality technologies.  He is currently a ...
+
+MARIELLE PLAT-ROBAIN
+
+FRANÇOIS DENQUIN
+
+ARTHUR GRUNWALD
+
+JEAN-CHRISTOPHE SARRAZIN
+
+BENOÎT G. BARDY received a PhD. degree in XX from XX in XX.  He is currently a Professor at the Université Montpellier and founder/director of the EuroMov Center for Research and Technological Development in Montpellier.  His research interests include human coordination and multimodal perceptual control of human posture and orientation, egomotion, as well as reaching and grasping in real and virtual environments.
