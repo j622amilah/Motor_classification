@@ -1,6 +1,6 @@
+import numpy as np
+
 def make_a_properlist(vec):
-    
-    import numpy as np
     
     out = []
     for i in range(len(vec)):
