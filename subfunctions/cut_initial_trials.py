@@ -5,14 +5,13 @@ import plotly.graph_objects as go
 
 # Personal python functions
 import sys
-# sys.path.insert(1, '/home/jamilah/Documents/Sourceforge_analysis_PROJECTS/Motor_classification/subfunctions')
-sys.path.insert(1, 'C:\\Users\\jamilah\\Documents\\Sourceforge_analysis_PROJECTS\\Motor_classification\\subfunctions')
+sys.path.insert(1, 'C:\\Users\\jamilah\\Documents\\Github_analysis_PROJECTS\\Time_series_analysis\\Motor_classification\\Motor_classification')
 
-from subfunctions.check_axes_assignmentPLOT import *
+
 from subfunctions.findall import *
 from subfunctions.detect_sig_change_wrt_baseline import *
 from subfunctions.detect_jumps_in_index_vector import *
-
+from subfunctions.make_a_properlist import *
 
 
 
