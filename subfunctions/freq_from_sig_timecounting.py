@@ -3,8 +3,8 @@ import numpy as np
 # Plotting
 import plotly.graph_objects as go
 
-from detect_jumps_in_data import *
-from make_a_properlist.make_a_properlist import *
+from subfunctions.detect_jumps_in_data import *
+from subfunctions.make_a_properlist import *
 
 
 def freq_from_sig_timecounting(sig, t, ts, dp_jump, plotORnot):

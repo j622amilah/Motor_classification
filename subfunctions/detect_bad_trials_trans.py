@@ -10,10 +10,6 @@ import scipy.stats
 
 from collections import Counter
 
-# Personal python functions
-import sys
-sys.path.insert(1, 'C:\\Users\\jamilah\\Documents\\Github_analysis_PROJECTS\\Time_series_analysis\\Motor_classification\\Motor_classification')
-
 from subfunctions.findall import *
 from subfunctions.full_sig_2_cell import *
 from subfunctions.detect_vertically_short_FBLR import *

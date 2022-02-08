@@ -10,8 +10,8 @@ from scipy.fft import fft, ifft
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
-from make_a_properlist import *
-from freqresp_functions import *
+from subfunctions.make_a_properlist import *
+from subfunctions.freqresp_functions import *
 
 
 
