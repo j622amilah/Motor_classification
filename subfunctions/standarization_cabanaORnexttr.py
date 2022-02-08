@@ -225,8 +225,8 @@ def standarization_cabanaORnexttr(joy_ax_index, joy_ax_dir, binary_marker, scala
     if plotORnot == 1:
         # ------------------------------
         # Make a folder for saving images
-        if not os.path.exists("images_standard"):
-            os.mkdir("images_standard")
+        if not os.path.exists("%s\\images_standard" % (varr['main_path1'])):
+            os.mkdir("%s\\images_standard" % (varr['main_path1']))
         # ------------------------------
         standarization_plotting(s, tr, normalized_outSIG, outJOY, axis_out, varr, ind_joy_ax_moved, joy_ax_index, cab_index_viaSS, descript, dircor)
     

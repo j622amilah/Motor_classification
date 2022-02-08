@@ -12,8 +12,7 @@ from collections import Counter
 
 # Personal python functions
 import sys
-# sys.path.insert(1, '/home/jamilah/Documents/Sourceforge_analysis_PROJECTS/Motor_classification/subfunctions')
-sys.path.insert(1, 'C:\\Users\\jamilah\\Documents\\Sourceforge_analysis_PROJECTS\\Motor_classification\\subfunctions')
+sys.path.insert(1, 'C:\\Users\\jamilah\\Documents\\Github_analysis_PROJECTS\\Time_series_analysis\\Motor_classification\\Motor_classification')
 
 from subfunctions.findall import *
 from subfunctions.full_sig_2_cell import *
@@ -317,7 +316,7 @@ def detect_bad_trials_trans(axis_out, Len_tr, good_tr, outJOY, outSIG, outSIGCOM
         
         
     # Now, check the time length of each trial
-    width_cutoff = 8    # cut data with time greater than 8 seconds
+    width_cutoff = 16    # cut data with time greater than 8 seconds
     cut_trial_hor_short = []
     for tr in good_tr:
         if tr_t_diff[tr] < width_cutoff:
@@ -332,6 +331,5 @@ def detect_bad_trials_trans(axis_out, Len_tr, good_tr, outJOY, outSIG, outSIGCOM
     # :::::::::::::::::::
     
     # ------------------------------
-    
     
     return robotjump_cutlist, robotstall_cutlist, LRFB_nonzero_start, UD_initialization, cut_trial_ver_short, cut_trial_hor_short, new3_ind_st, new3_ind_end, outJOY, outSIG, outSIGCOM

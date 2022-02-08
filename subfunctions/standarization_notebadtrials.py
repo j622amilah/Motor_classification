@@ -11,10 +11,6 @@ from statistics import mode, mean, median, multimode
 import scipy.stats
 
 # Personal python functions
-import sys
-# sys.path.insert(1, '/home/jamilah/Documents/Sourceforge_analysis_PROJECTS/Motor_classification/subfunctions')
-sys.path.insert(1, 'C:\\Users\\jamilah\\Documents\\Sourceforge_analysis_PROJECTS\\Motor_classification\\subfunctions')
-
 from subfunctions.findall import *
 from subfunctions.standarization_check_if_joy_moved import *
 from subfunctions.detect_sig_change_wrt_baseline import *

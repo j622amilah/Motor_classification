@@ -73,5 +73,5 @@ def standarization_plotting(s, tr, normalized_outSIG, outJOY, axis_out, varr, in
     fig.show(config=config)
 
     fig.write_image("images_standard/fig%d.png" % (tr))
-    
+
     return

@@ -63,4 +63,4 @@ def standarization_fill_in_matrix(ind_joy_ax_moved, cab_index_viaSS, joy_ax_inde
     # print('sca_ind :' + str(sca_ind))
     # print('d_m :' + str(d_m))
 
-    return bin_m, sca_ind, d_m
+    return bin_m, sca_ind, d_m                      

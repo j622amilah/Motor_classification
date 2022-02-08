@@ -1,3 +1,5 @@
+# Created by Jamilah Foucher, Juin 17, 2021 
+
 # Purpose: The purpose of this function is to find numbers in a vector based on an expression with respect to a value.
 
 # Example:
@@ -49,7 +51,5 @@ def findall(vec, expression, val):
             if vec[i] < val:
                 newvec.append(vec[i])
                 ind_newvec.append(i)
-    
-    ind_newvec = [int(x) for x in ind_newvec]
     
     return newvec, ind_newvec

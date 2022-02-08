@@ -86,7 +86,7 @@ def detect_bad_trials_rot(Len_tr, good_tr, outSIG, axis_out, A, new3_ind_st, new
     new3_ind_end = new3_ind_end_temp
 
     # Now, check the time length of each trial
-    width_cutoff = 12    # cut data with time greater than 12 seconds
+    width_cutoff = 16    # OLD:cut data with time greater than 12 seconds
     cut_trial_hor_short = []
     tr_t_diff = np.zeros((Len_tr))
     dp_diff = np.zeros((Len_tr))
@@ -118,5 +118,5 @@ def detect_bad_trials_rot(Len_tr, good_tr, outSIG, axis_out, A, new3_ind_st, new
     # :::::::::::::::::::
     
     # ------------------------------
-    
+   
     return cut_trial_ver_short, cut_trial_hor_short

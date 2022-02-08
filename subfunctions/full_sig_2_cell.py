@@ -108,7 +108,7 @@ def full_sig_2_cell(A, a, b, c, ind_st, ind_end, varr):
         
         # print('size of an axis trial block in outSIGCOM : ' + str(temp_list3_trmat.shape))
         
-        # Stack trial matricies of [0:tr_dplen by 3]
+        # Stack trial matrices of [0:tr_dplen by 3]
         outJOY = outJOY + [temp_list1_trmat]
         outSIG = outSIG + [temp_list2_trmat]
         outSIGCOM = outSIGCOM + [temp_list3_trmat]

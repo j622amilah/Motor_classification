@@ -25,7 +25,7 @@
 # Overall= row: 3, col:4
 
 from collections import namedtuple
-
+import numpy as np
 
 def size(vec):
     rvec = []
@@ -39,8 +39,15 @@ def size(vec):
         coutr += 1
         coutc = 0
 
-        #print('length of r : ' + str(len(r)))
-        r = [int(x) for x in r]
+        # print('length of r : ' + str(len(r)))
+        # r = [int(x) for x in r]
+        # OR
+        temp = []
+        for x in r:
+            if np.isnan(x).any() == False:
+                temp.append(int(x))
+            else:
+                temp.append(x)
 
         for col in r:
             #print(col)

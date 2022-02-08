@@ -6,8 +6,6 @@ import plotly.graph_objects as go
 from subfunctions.make_a_properlist import *
 
 
-
-
 def window_3axesDATA(tr, threeax_data, win):
     
     num_of_dp = len(threeax_data[tr][:,0])

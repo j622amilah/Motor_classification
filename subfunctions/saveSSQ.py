@@ -112,5 +112,5 @@ def saveSSQ(s, which_exp):
     
     
     diff = before - after
-
+    
     return [before, after, diff]

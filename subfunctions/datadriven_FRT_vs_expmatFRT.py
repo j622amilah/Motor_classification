@@ -4,10 +4,6 @@ import numpy as np
 import plotly.graph_objects as go
 
 # Personal python functions
-import sys
-# sys.path.insert(1, '/home/jamilah/Documents/Sourceforge_analysis_PROJECTS/Motor_classification/subfunctions')
-sys.path.insert(1, 'C:\\Users\\jamilah\\Documents\\Sourceforge_analysis_PROJECTS\\Motor_classification\\subfunctions')
-
 from subfunctions.standarization_check_if_joy_moved import *
 from subfunctions.make_a_properlist import *
 

@@ -14,12 +14,9 @@ import scipy.stats
 from subfunctions.check_axes_assignmentPLOT import *
 from subfunctions.cut_initial_trials import *
 from subfunctions.full_sig_2_cell import *
-
 from subfunctions.detect_bad_trials_rot import *
 from subfunctions.detect_bad_trials_trans import *
-
 from subfunctions.make_a_properlist import *
-
 from subfunctions.process_index_for_trials import *
 from subfunctions.process_index_for_UD_trials_timedetect import *
 from subfunctions.process_index_for_FBLR_trials_timedetect import *
@@ -88,7 +85,7 @@ def main_preprocessing_steps(varr, A, a, b, c, s, NUMmark, yr):
     
     
     # ------------------------------
-    # Axis and stimulus detection
+    # Axis detection and detrended time
     # ------------------------------
     # Way 1: Experimental collected data axis detection
     trialnum_org = np.zeros((Len_tr))
@@ -104,13 +101,6 @@ def main_preprocessing_steps(varr, A, a, b, c, s, NUMmark, yr):
         trialnum_org[tr] = mode(A[st:stp, 1-1])   # trial count
         axis_org[tr] = mode(A[st:stp, 14-1])  # axis that was stimulated: axis that was stimulated: axis of interest (1:roll, 2:pitch, 3:yaw), (1:left/right, 2:forward/back, 3:up/down)
         
-        if varr['which_exp'] == 'rot':
-            speed_stim_org[tr] = mode(A[st:stp, 19-1])   # gradual stimulation of choosen axis of stimulation ([1.2500; 0.5000; 0; -0.5000; -1.2500]
-        elif varr['which_exp'] == 'trans':
-            speed_stim_org[tr] = mode(A[st:stp, 10-1]) + mode(A[st:stp, 11-1]) + mode(A[st:stp, 12-1])
-            # target translational speed 1 + target translational speed 2 + target translational speed 3
-            # speed_stim_org is the sum of the target angular speed will give the speed_stim column
-        
         # ------------------
         # Time initally calculated for plotting
         ttime = A[new3_ind_st[tr]:new3_ind_end[tr], 2-1]  # time in seconds
@@ -118,6 +108,13 @@ def main_preprocessing_steps(varr, A, a, b, c, s, NUMmark, yr):
         tt2 = vertshift_segments_of_data_wrt_prevsegment(ttime, dp_jump) # Time vertically shifted and baseline shifted to zero
         time_org =  time_org + [tt2]
         # ------------------
+        
+        if varr['which_exp'] == 'rot':
+            speed_stim_org[tr] = mode(A[st:stp, 19-1])   # gradual stimulation of choosen axis of stimulation ([1.2500; 0.5000; 0; -0.5000; -1.2500]
+        elif varr['which_exp'] == 'trans':
+            speed_stim_org[tr] = mode(A[st:stp, 10-1]) + mode(A[st:stp, 11-1]) + mode(A[st:stp, 12-1])
+            # target translational speed 1 + target translational speed 2 + target translational speed 3
+            # speed_stim_org is the sum of the target angular speed will give the speed_stim column
     # ------------------------------
     
     
@@ -294,11 +291,23 @@ def main_preprocessing_steps(varr, A, a, b, c, s, NUMmark, yr):
     stoptrial_index = make_a_properlist(stoptrial_index)
     
     marg = 5  # margin around signal baseline for zonemax area
-        
+    
+    
+    # -------------------------------------
+    outer_fn = 'main_processing_verificationOF_each_trial'
+    # create a directory for saving images
+    if not os.path.exists("%s\\%s" % (varr['main_path1'], outer_fn)):
+        os.mkdir("%s\\%s" % (varr['main_path1'], outer_fn))
+    # -------------------------------------
+    
+    
     filename = 'images_initialdetection_%s_s%d' % (varr['which_exp'], s)
     # create a directory for saving images
-    if not os.path.exists("%s" % (filename)):
-        os.mkdir("%s" % (filename))
+    if not os.path.exists("%s\\%s\\%s" % (varr['main_path1'], outer_fn, filename)):
+        os.mkdir("%s\\%s\\%s" % (varr['main_path1'], outer_fn, filename))
+        
+        
+    
     
     
     if varr['which_exp'] == 'rot':
@@ -500,6 +509,5 @@ def main_preprocessing_steps(varr, A, a, b, c, s, NUMmark, yr):
         # fig.show(config=config)
         # --------------------
     # ------------------------------
-    
     
     return starttrial_index, stoptrial_index, speed_stim_sign, speed_stim_mag, speed_stim_org, axis_out, axis_org, new3_ind_st, new3_ind_end, g_rej_vec, outJOY, outSIG, outSIGCOM, outNOISE, corr_axis_out, corr_speed_stim_out, trialnum_org, time_org, FRT, good_tr
