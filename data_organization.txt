@@ -1,0 +1,207 @@
+Simulink saving (old method that Jeremie created, but it took a lot of processing time and thus caused delays in the system):
+
+- For subjects 1 to 8
+- Note: Jeremie sampled a data point every 0.1 seconds, so this dataset sampling rate is only 10Hz.  He downsampled because collecting all of the data would slow down the computer/Saturn too much.  Also, he figured that human response movement can not be faster than 10Hz, so he downsampled the data to this rate.
+
+-------------------------------------------------------------------------------
+Column number        Meaning
+-------------------------------------------------------------------------------       
+1                                trial count
+2                                time in seconds
+3                                commanded 1 (left/right) - commanded position of cabin
+4                                commanded 2 (forward/back) - commanded position of cabin
+5                                commanded 3 (up/down) - commanded position of cabin
+6                                actual 1 (left/right) - actual physical position of cabin
+7                                actual 2 (forward/back) - actual physical position of cabin
+8                                actual 3 (up/down) - actual physical position of cabin
+9                                delay in seconds
+10                              target translational speed 1
+11                              target translational speed 2
+12                              target translational speed 3
+13                              familiarity phase/practice (1) or experiment (0)
+14                              axis that was stimulated: axis of interest (1:left/right, 2:forward/back, 3:up/down)
+15                              Taact  - time at which the subject pushes/controls the joystick (first reacts)
+16                              stick 1 (left/right) - joystick movement
+17                              stick 2    (forward/back) - joystick movement
+18                              stick 3 (up/down) - joystick movement
+19                              gradual stimulation of choosen axis of stimulation
+20                              noise 1 (x) - additional vibrational stimulation
+21                              noise 2 (y) - additional vibrational stimulation
+22                              noise 3 (z) - additional vibrational stimulation
+
+
+
+
+Labview saving (new method we used such that the delays in the system were reduced, the data saving was done on Pluton instead of Saturn (the PC that runs the model).)
+
+- For subjects 9 to 14
+- Note: The sampling rate is 252Hz (the data is not downsampled)
+
+-------------------------------------------------------------------------------
+Column number        		Meaning
+-------------------------------------------------------------------------------
+(Cnt)
+1                               trial count
+
+(time)
+2                               time in seconds
+
+(fro_pos)
+3                               commanded 1 (left/right) - commanded position of cabin
+4                               commanded 2 (forward/back) - commanded position of cabin
+5                               commanded 3 (up/down) - commanded position of cabin
+
+(act_pos)
+6                               actual 1 (left/right) - actual physical position of cabin (cm)
+7                               actual 2 (forward/back) - actual physical position of cabin (cm)
+8                               actual 3 (up/down) - actual physical position of cabin (cm)
+
+(delay)
+9                               delay in seconds
+
+(stim_rpy (cm/s))
+10                              target translational speed 1
+11                              target translational speed 2
+12                              target translational speed 3
+
+(vis_cond)
+13                              familiarity phase/practice (1) or experiment (0)
+
+(B current_axis)
+14                              axis that was stimulated: axis of interest (1:left/right, 2:forward/back, 3:up/down)
+
+(Taact)
+15                              Taact  - time at which the subject pushes/controls the joystick (first reacts)
+
+(Joystick)
+16                              stick 1 (left/right) - joystick movement
+17                              stick 2    (forward/back) - joystick movement
+18                              stick 3 (up/down) - joystick movement
+
+(gradual_stim)
+19                              gradual stimulation of choosen axis of stimulation
+
+(noise_rpy)
+20                              noise 1 (x) - additional vibrational stimulation
+21                              noise 2 (y) - additional vibrational stimulation
+22                              noise 3 (z) - additional vibrational stimulation
+
+(Act_X)
+23				It gives a 0 when the 'Connect_X' button is not pushed, gives a 1 whne pushed - 1 means the experiment is in progress and 0 means the experiment is not in progress (cut the data that has a 0)
+
+(RestPhase)
+24 				It gives a 0 during the trial, 1 during the rest period	
+
+
+
+
+Organization of excel tables for statistical analysis: (created in matlab make_jeremie_matrix_m07d06y17.m starting on line 1475)
+-------------------------------------------------------------------------------
+Column			Name				Meaning
+-------------------------------------------------------------------------------
+1			subname				subject name
+
+2			trialnum			trial number
+
+3			trial_dur			trial duration in seconds
+
+4			stim_axis			axis that was stimulated (1=left/right, 2=forward/back, 3=up/down)
+
+5			stim_axis w no stim		axis that was stimulated (1=left/right, 2=forward/back, 3=up/down) with an extra case of 0 (when there was no movement stimulation of the cabin, meaning the cabin did not move)
+
+6			target speed			the amount of stimulation - stim of axis of interest (-15cm/s, -3.75cm/s, 0cm/s, 3.75cm/s, 15cm/s, 17.5cm/s)
+
+7			target speed number format	the amount of stimulation - stim of axis of interest
+
+8			frt				time in which they first responded
+	
+9			frt_lr				time in which they first responded for left/right stimulation only, other stimulation set to zero for analysis in Statistica	
+
+10			frt_fb				time in which they first responded for forward/backward stimulation only, other stimulation set to zero for analysis in Statistica
+
+11			frt_ud				time in which they first responded for up/down stimulation only, other stimulation set to zero for analysis in Statistica
+
+12			ang_frt				distance from initial position when subject first responded
+
+13			angfrt_lr			distance from initial position when they first responded for left/right stimulation only, other stimulation set to zero for analysis in Statistica
+	
+14			angfrt_fb			distance from initial position when they first responded for forward/backward stimulation only, other stimulation set to zero for analysis in Statistica
+
+15 			angfrt_ud			distance from initial position when they first responded for up/down stimulation only, other stimulation set to zero for analysis in Statistica
+
+16			det_cor				subject initially moves in the correct axis is denoted by 1, subject initially moves in the wrong axis is denoted by 0
+
+17			detcor_lr			subject initially moves in the correct axis is denoted by 1, subject initially moves in the wrong axis is denoted by 0, for left/right stimulation only; other stimulation set to zero for analysis in Statistica
+
+18			detcor_fb			subject initially moves in the correct axis is denoted by 1, subject initially moves in the wrong axis is denoted by 0, for forward/backward stimulation only; other stimulation set to zero for analysis in Statistica
+
+19			detcor_ud			subject initially moves in the correct axis is denoted by 1, subject initially moves in the wrong axis is denoted by 0, for up/down stimulation only; other stimulation set to zero for analysis in Statistica
+
+20			dir_cor				subject moves in the correct axis with the correct direction (negative=left/backward/up or positive=right/forward/down); keep in mind that when the subject chooses the correct axis they need to move either in one direction (negative) or in the other direction (positive).
+
+21			dircor_lr			subject moves in the correct axis with the correct direction (negative=left or positive=right) for left/right stimulation only; other stimulation set to zero for analysis in Statistica
+
+22			dircor_fb			subject moves in the correct axis with the correct direction (negative=backward or positive=forward) for forward/backward stimulation only; other stimulation set to zero for analysis in Statistica
+
+23			dircor_ud			subject moves in the correct axis with the correct direction (negative=up or positive=down) for up/down stimulation only; other stimulation set to zero for analysis in Statistica
+
+24			lr_acti				joystick activity in the left/right direction (negative denotes left, positive denotes right)
+
+25			fb_acti				joystick activity in the forward/backward direction (negative denotes backward, positive denotes forward)
+		
+26			ud_acti				joystick activity in the up/down direction (negative denotes up, positive denotes down)
+
+27			lr_max				maximum left/right motion of the cabin in terms of distance (cm)
+
+28			fb_max				maximum forward/backward motion of the cabin in terms of distance (cm)
+
+29			ud_max				maximum up/down motion of the cabin in terms of distance (cm)
+
+30			lr_min				minimum left/right motion of the cabin in terms of distance (cm)
+
+31			fb_min				minimum forward/backward motion of the cabin in terms of distance (cm)
+
+32			ud_min				minimum up/down motion of the cabin in terms of distance (cm)
+
+33			rel_mse_lr			relative mean squared error of the cabin motion in the left/right axis, in terms of distance (cm)
+
+34			rel_mse_fb			relative mean squared error of the cabin motion in the forward/backward axis, in terms of distance (cm)
+
+35			rel_mse_ud			relative mean squared error of the cabin motion in the up/down axis, in terms of distance (cm)
+
+36			rel_std_lr			relative standard deviation of the cabin motion in the left/right axis, in terms of distance (cm)
+
+37			rel_std_fb			relative standard deviation of the cabin motion in the forward/backward axis, in terms of distance (cm)
+
+38			rel_std_ud			relative standard deviation of the cabin motion in the up/down axis, in terms of distance (cm)
+
+39			abs_mean_lr			absolute mean of the cabin motion in the left/right axis, in terms of distance (cm)
+
+40			abs_mean_fb			absolute mean of the cabin motion in the forward/backward axis, in terms of distance (cm)
+
+41			abs_mean_ud			absolute mean of the cabin motion in the up/down axis, in terms of distance (cm)
+
+42			abs_std_lr			absolute standard deviation of the cabin motion in the left/right axis, in terms of distance (cm)
+
+43			abs_std_fb			absolute standard deviation of the cabin motion in the forward/backward axis, in terms of distance (cm)
+
+44			abs_std_ud			absolute standard deviation of the cabin motion in the up/down axis, in terms of distance (cm)
+
+45			lr_bz 				final position of the cabin for the left/right axis at the end of the trial (cm)
+
+46			fb_bz				final position of the cabin for the forward/backward axis at the end of the trial (cm)
+
+47			ud_bz				final position of the cabin for the up/down axis at the end of the trial (cm)
+
+48			tcas				time it took to find the correct axis (sec)
+
+49			sel_ax				selected axis  (1=left/right, 2=forward/back, 3=up/down)
+	
+50			p_freq_lr			pseudo frequency of joystick movement in the left/right axis, where the equation is N/(2*(tf-tO))  N=number of oscillations (we find the peaks in the joystick signal), tf=time final, t0=time initial
+
+51			p_freq_fb			pseudo frequency of joystick movement in the forward/backward axis, where the equation is N/(2*(tf-tO))  N=number of oscillations (we find the peaks in the joystick signal), tf=time final, t0=time initial
+
+52			p_freq_ud			pseudo frequency of joystick movement in the up/down axis, where the equation is N/(2*(tf-tO))  N=number of oscillations (we find the peaks in the joystick signal), tf=time final, t0=time initial
+
+ 
+
