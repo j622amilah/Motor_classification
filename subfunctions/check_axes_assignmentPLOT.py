@@ -13,8 +13,11 @@ def check_axes_assignmentPLOT(s, outJOY, outSIG, axis_out, varr, filename, time_
     
     
     # create a directory for saving images
-    if not os.path.exists("%s\\%s_s%d" % (varr['main_path1'], filename, s)):
-        os.mkdir("%s\\%s_s%d" % (varr['main_path1'], filename, s))
+    if not os.path.exists("%s/%s_s%d" % (varr['main_path1'], filename, s)):
+        os.mkdir("%s/%s_s%d" % (varr['main_path1'], filename, s))
+        
+    # if not os.path.exists("%s\\%s_s%d" % (varr['main_path1'], filename, s)):
+    #     os.mkdir("%s\\%s_s%d" % (varr['main_path1'], filename, s))
     
     max_sig_val = []
     for tr in range(len(axis_out)):
@@ -53,6 +56,8 @@ def check_axes_assignmentPLOT(s, outJOY, outSIG, axis_out, varr, filename, time_
         fig.update_layout(title=title_str, xaxis_title=xaxis_name, yaxis_title='Movement')
         
         fig.show(config=config)
-        fig.write_image("%s\\%s_s%d\\fig%d.png" % (varr['main_path1'], filename, s, tr))
+        
+        fig.write_image("%s/%s_s%d/fig%d.png" % (varr['main_path1'], filename, s, tr))
+        # fig.write_image("%s\\%s_s%d\\fig%d.png" % (varr['main_path1'], filename, s, tr))
 
     return

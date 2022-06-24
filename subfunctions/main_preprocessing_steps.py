@@ -25,7 +25,7 @@ from subfunctions.process_index_for_FBLR_trials_timedetect import *
 import os
 
 
-def main_preprocessing_steps(varr, A, a, b, c, s, NUMmark, yr):
+def main_preprocessing_steps(varr, A, a, b, c, s, NUMmark, yr, plotORnot_ALL, filemarker):
 
 
     # ------------------------------
@@ -42,15 +42,13 @@ def main_preprocessing_steps(varr, A, a, b, c, s, NUMmark, yr):
         num_pt_grp =  1 #5
         plotORnot_allpts = 0
         plotORnot = 0  # 1 = show figures, 0 = do not show figures
-        which_data2use = 'time'
     elif varr['which_exp'] == 'trans':
         marg_of_zero = 1
         num_pt_grp = 1
         plotORnot_allpts = 0
         plotORnot = 0  # 1 = show figures, 0 = do not show figures
-        which_data2use = 'time'
         
-    new3_ind_st, new3_ind_end = cut_initial_trials(varr, A, marg_of_zero, num_pt_grp, plotORnot_allpts, plotORnot, which_data2use)
+    new3_ind_st, new3_ind_end = cut_initial_trials(varr, A, marg_of_zero, num_pt_grp, plotORnot_allpts, plotORnot, which_data2use='time')
     # ------------------------------
     
     ind_st_ORG = new3_ind_st
@@ -83,41 +81,8 @@ def main_preprocessing_steps(varr, A, a, b, c, s, NUMmark, yr):
     # ------------------------------
     
     
-    
     # ------------------------------
-    # Axis detection and detrended time
-    # ------------------------------
-    # Way 1: Experimental collected data axis detection
-    trialnum_org = np.zeros((Len_tr))
-    axis_org = np.zeros((Len_tr))
-    speed_stim_org = np.zeros((Len_tr))
-    
-    time_org = []
-    
-    for tr in range(Len_tr):
-        st = int(new3_ind_st[tr])
-        stp = int(new3_ind_end[tr])
-        
-        trialnum_org[tr] = mode(A[st:stp, 1-1])   # trial count
-        axis_org[tr] = mode(A[st:stp, 14-1])  # axis that was stimulated: axis that was stimulated: axis of interest (1:roll, 2:pitch, 3:yaw), (1:left/right, 2:forward/back, 3:up/down)
-        
-        # ------------------
-        # Time initally calculated for plotting
-        ttime = A[new3_ind_st[tr]:new3_ind_end[tr], 2-1]  # time in seconds
-        dp_jump = 1     # detect jumps in the time greater than 1 second
-        tt2 = vertshift_segments_of_data_wrt_prevsegment(ttime, dp_jump) # Time vertically shifted and baseline shifted to zero
-        time_org =  time_org + [tt2]
-        # ------------------
-        
-        if varr['which_exp'] == 'rot':
-            speed_stim_org[tr] = mode(A[st:stp, 19-1])   # gradual stimulation of choosen axis of stimulation ([1.2500; 0.5000; 0; -0.5000; -1.2500]
-        elif varr['which_exp'] == 'trans':
-            speed_stim_org[tr] = mode(A[st:stp, 10-1]) + mode(A[st:stp, 11-1]) + mode(A[st:stp, 12-1])
-            # target translational speed 1 + target translational speed 2 + target translational speed 3
-            # speed_stim_org is the sum of the target angular speed will give the speed_stim column
-    # ------------------------------
-    
-    
+    # Axis detection
     # ------------------------------
     # Determine Experimental stimulation axes from data : Data-driven axis detection
     # This parameter should have been given in the experimental matrix, but
@@ -184,10 +149,68 @@ def main_preprocessing_steps(varr, A, a, b, c, s, NUMmark, yr):
     
     
     # ------------------------------
+    # Speed stimulus detection and detrended time
+    # ------------------------------
+    # Way 1: Experimental collected data axis detection
+    trialnum_org = np.zeros((Len_tr))
+    axis_org = np.zeros((Len_tr))
+    speed_stim_org = np.zeros((Len_tr))
+    # ................
+    tar_ang_speed_val_co = np.zeros((Len_tr))
+    
+    
+    time_org = []
+    
+    for tr in range(Len_tr):
+        st = int(new3_ind_st[tr])
+        stp = int(new3_ind_end[tr])
+        
+        trialnum_org[tr] = mode(A[st:stp, 1-1])   # trial count
+        axis_org[tr] = mode(A[st:stp, 14-1])  # axis that was stimulated: axis that was stimulated: axis of interest (1:roll, 2:pitch, 3:yaw), (1:left/right, 2:forward/back, 3:up/down)
+        
+        # ------------------
+        # Time initally calculated for plotting
+        ttime = A[new3_ind_st[tr]:new3_ind_end[tr], 2-1]  # time in seconds
+        dp_jump = 1     # detect jumps in the time greater than 1 second
+        tt2 = vertshift_segments_of_data_wrt_prevsegment(ttime, dp_jump) # Time vertically shifted and baseline shifted to zero
+        time_org =  time_org + [tt2]
+        # ------------------
+        
+        if varr['which_exp'] == 'rot':
+        	speed_stim_org[tr] = mode(A[st:stp, 19-1])   # gradual stimulation of choosen axis of stimulation ([1.2500; 0.5000; 0; -0.5000; -1.2500]
+        	# ................
+        	# Alternative way to obtain the speed_stim : this was more accurate because it was less affected by the delay
+        	# The axis were confirmed to be correct : remember the joystick roll and pitch were reversed but target angular speed order was correct
+        	val = axis_out[tr]  # 0=RO, 1=PI, 2=YA
+        	if val == 0:
+        		tar_ang_speed_val_co[tr] = mode(A[st:stp, 10-1])
+        	elif val == 1:
+        		tar_ang_speed_val_co[tr] = mode(A[st:stp, 11-1])
+        	elif val == 2:
+        		tar_ang_speed_val_co[tr] = mode(A[st:stp, 12-1])
+        	# ................
+        elif varr['which_exp'] == 'trans':
+        	speed_stim_org[tr] = mode(A[st:stp, 10-1]) + mode(A[st:stp, 11-1]) + mode(A[st:stp, 12-1])
+        	# target translational speed 1 + target translational speed 2 + target translational speed 3
+        	# speed_stim_org is the sum of the target angular speed will give the speed_stim column
+        	# ................
+        	# Correct order :
+        	val = axis_out[tr]  # 0=LR, 1=FB, 2=UD
+        	if val == 0: 
+        		tar_ang_speed_val_co[tr] = mode(A[st:stp, 10-1])
+        	elif val == 1:
+        		tar_ang_speed_val_co[tr] = mode(A[st:stp, 11-1])
+        	elif val == 2:
+        		tar_ang_speed_val_co[tr] = mode(A[st:stp, 12-1])
+        	# ................
+    # ------------------------------
+    
+    
+    
+    # ------------------------------
     # Check if axes are assigned correctly to trials: PLOTTING
     # ------------------------------
-    plotORnot = 0
-    if plotORnot == 1:
+    if plotORnot_ALL == 1:
         filename = 'images_original_%s' % (varr['which_exp'])
         max_sig_val = check_axes_assignmentPLOT(s, outJOY, outSIG, axis_out, varr, filename, time_org)
     # ------------------------------
@@ -260,6 +283,7 @@ def main_preprocessing_steps(varr, A, a, b, c, s, NUMmark, yr):
     # -------------------------------------
     # Keep vectors the same original number of trials, 
     # put NUMmark for trials that are bad trials (horizontally and vertically short)
+    # We update the start-stop index (new3_ind_st, new3_ind_end) to avoid selecting junk data.
     # -------------------------------------
     for tr in cut_tr:
         new3_ind_st[tr] = NUMmark  # To prevent distraction of bad trials when plotting, but we leave the trial
@@ -271,10 +295,15 @@ def main_preprocessing_steps(varr, A, a, b, c, s, NUMmark, yr):
     
     # -----------------------------
     # Update trial cut data matrices - so that AFTER this point the bad trials are NOT PLOTTED
-    # to prevent distraction (we plot an empty plot to denote that the trial is bad)
+    # to prevent distraction (we plot an empty plot to denote that the trial is bad).
+    # We change the start-stop index (new3_ind_st, new3_ind_end) so we initially cut "good-looking" data,
+    # basically cutting away when the robot was reinitializing or when the robot stalled/jumped and the 
+    # data is still there.
     outJOY, outSIG, outSIGCOM, outNOISE = full_sig_2_cell(A, a, b, c, new3_ind_st, new3_ind_end, varr)
     # -----------------------------
     
+    # AFTER, this point when we talk about "bad trials",it is actually for a real trial. For those,
+    # we keep track of the trial number and select the trials that are on the "good trial" list.
     
     # -------------------------------------
     # Cut the good trial data more precisely depending on (RO/LR, PI/FB, YA/UD)
@@ -294,20 +323,20 @@ def main_preprocessing_steps(varr, A, a, b, c, s, NUMmark, yr):
     
     
     # -------------------------------------
+    
     outer_fn = 'main_processing_verificationOF_each_trial'
     # create a directory for saving images
-    if not os.path.exists("%s\\%s" % (varr['main_path1'], outer_fn)):
-        os.mkdir("%s\\%s" % (varr['main_path1'], outer_fn))
-    # -------------------------------------
+    if not os.path.exists("%s%s%s" % (varr['main_path1'], filemarker, outer_fn)):
+        os.mkdir("%s%s%s" % (varr['main_path1'], filemarker, outer_fn))
     
+    # -------------------------------------
     
     filename = 'images_initialdetection_%s_s%d' % (varr['which_exp'], s)
     # create a directory for saving images
-    if not os.path.exists("%s\\%s\\%s" % (varr['main_path1'], outer_fn, filename)):
-        os.mkdir("%s\\%s\\%s" % (varr['main_path1'], outer_fn, filename))
+    if not os.path.exists("%s%s%s%s%s" % (varr['main_path1'], filemarker, outer_fn, filemarker, filename)):
+        os.mkdir("%s%s%s%s%s" % (varr['main_path1'], filemarker, outer_fn, filemarker, filename))
         
-        
-    
+    # -------------------------------------
     
     
     if varr['which_exp'] == 'rot':
@@ -433,8 +462,6 @@ def main_preprocessing_steps(varr, A, a, b, c, s, NUMmark, yr):
     # ------------------------------
     
     
-    
-    
     # ------------------------------ 
     # Need to redo outSIG, outJOY, and outSIGCOM.
     # And, redo trialnum, axis_org, time_org, speed_stim_org with the FINAL start-stop points
@@ -456,12 +483,32 @@ def main_preprocessing_steps(varr, A, a, b, c, s, NUMmark, yr):
             tt2 = vertshift_segments_of_data_wrt_prevsegment(ttime, dp_jump)  # Time vertically shifted and baseline shifted to zero
             
             if varr['which_exp'] == 'rot':
-                speed_stim_org[tr] = mode(A[st:stp, 19-1])   # gradual stimulation of choosen axis of stimulation ([1.2500; 0.5000; 0; -0.5000; -1.2500]
+            	speed_stim_org[tr] = mode(A[st:stp, 19-1])   # gradual stimulation of choosen axis of stimulation ([1.2500; 0.5000; 0; -0.5000; -1.2500]
+            	# ................
+            	# Alternative way to obtain the speed_stim : this was more accurate because it was less affected by the delay
+            	# The axis were confirmed to be correct : remember the joystick roll and pitch were reversed but target angular speed order was correct
+            	val = axis_out[tr]  # 0=RO, 1=PI, 2=YA
+            	if val == 0:
+            		tar_ang_speed_val_co[tr] = mode(A[st:stp, 10-1])
+            	elif val == 1:
+            		tar_ang_speed_val_co[tr] = mode(A[st:stp, 11-1])
+            	elif val == 2:
+            		tar_ang_speed_val_co[tr] = mode(A[st:stp, 12-1])
+            	# ................
             elif varr['which_exp'] == 'trans':
-                speed_stim_org[tr] = mode(A[st:stp, 10-1]) + mode(A[st:stp, 11-1]) + mode(A[st:stp, 12-1])
-                # target translational speed 1 + target translational speed 2 + target translational speed 3
-                # speed_stim_org is the sum of the target angular speed will give the speed_stim column
-        
+            	speed_stim_org[tr] = mode(A[st:stp, 10-1]) + mode(A[st:stp, 11-1]) + mode(A[st:stp, 12-1])
+            	# target translational speed 1 + target translational speed 2 + target translational speed 3
+            	# speed_stim_org is the sum of the target angular speed will give the speed_stim column
+            	# ................
+            	# Correct order :
+            	val = axis_out[tr]  # 0=LR, 1=FB, 2=UD
+            	if val == 0: 
+            		tar_ang_speed_val_co[tr] = mode(A[st:stp, 10-1])
+            	elif val == 1:
+            		tar_ang_speed_val_co[tr] = mode(A[st:stp, 11-1])
+            	elif val == 2:
+            		tar_ang_speed_val_co[tr] = mode(A[st:stp, 12-1])
+				# ................
         time_org =  time_org + [tt2]
     # ------------------------------
     
@@ -476,16 +523,11 @@ def main_preprocessing_steps(varr, A, a, b, c, s, NUMmark, yr):
     
     
     # ------------------------------
-    # Confirmation check of stimulation : 
-    # Can not ultimately measure from data the speed stimulation magnitude because participant behavior
-    # is mixed with cabin maximum value
-    # We check the direction, but many parameters are correct so we trust the original speed_stim_org
-    speed_stim_org_sign = make_a_properlist(np.sign(speed_stim_org))
-    speed_stim_sign = make_a_properlist(speed_stim_sign)
-    
-    corr_speed_stim_out = np.corrcoef(speed_stim_org_sign, speed_stim_sign) # outputs a correlation matrix
-    corr_speed_stim_out = corr_speed_stim_out[0,1]
-    print('corr_speed_stim_out : ' + str(corr_speed_stim_out))
+    # Speed stim sign measurements : There are multiple ways to calculate the speed stimulus direction
+    # ------------------------------
+    speed_stim_org_sign = make_a_properlist(np.sign(speed_stim_org))  # 1st way to calculate speed_stim_sign (Experimental matrix)
+    speed_stim_sign = make_a_properlist(speed_stim_sign)   # 2nd way to calculate speed_stim_sign (Data driven : using the cabin stimulus movement slope. The problem with this method is that the cabin stimulus is a sum of both the stimulus and the joystick, so this may not be correct all the time)
+    speed_stim_tas_sign = make_a_properlist(np.sign(tar_ang_speed_val_co))   # 3rd way to calculate speed_stim_sign (Experimental matrix)
     # ------------------------------
         
         
@@ -510,4 +552,4 @@ def main_preprocessing_steps(varr, A, a, b, c, s, NUMmark, yr):
         # --------------------
     # ------------------------------
     
-    return starttrial_index, stoptrial_index, speed_stim_sign, speed_stim_mag, speed_stim_org, axis_out, axis_org, new3_ind_st, new3_ind_end, g_rej_vec, outJOY, outSIG, outSIGCOM, outNOISE, corr_axis_out, corr_speed_stim_out, trialnum_org, time_org, FRT, good_tr
+    return starttrial_index, stoptrial_index, speed_stim_sign, speed_stim_org_sign, speed_stim_mag, speed_stim_org, tar_ang_speed_val_co, speed_stim_tas_sign, axis_out, axis_org, new3_ind_st, new3_ind_end, g_rej_vec, outJOY, outSIG, outSIGCOM, outNOISE, corr_axis_out, trialnum_org, time_org, FRT, good_tr

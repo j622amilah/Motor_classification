@@ -730,7 +730,7 @@ def binary_gaussian_naive_bayes(X_train, X_test, Y_train_1D, Y_test_1D):
 
 
 # ----------------------------------------------
-def pipeline_permutation_importance(model, X_test, Y_test, feature_names):
+def permutation_importance_scikit(model, X_test, Y_test):
     
     from sklearn.inspection import permutation_importance
     

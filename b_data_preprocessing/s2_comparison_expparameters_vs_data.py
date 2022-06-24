@@ -21,7 +21,12 @@ import os
 
 
 
-def s2_comparison_expparameters_vs_data(varr):
+def s2_comparison_expparameters_vs_data(varr, PCtype):
+
+	if PCtype == 'Windows':
+    	filemarker = '\\'
+    elif PCtype == 'Linux':
+    	filemarker = '/'
 
     # ------------------------------
     # There were differences between the robotic/participant data and the experimental matrix parameters (axis, speed_stim).
@@ -61,8 +66,8 @@ def s2_comparison_expparameters_vs_data(varr):
             varr['anom'] = 'RO', 'PI', 'YA'
             varr['joyanom'] = '1', '2', '3'  # Numbers for standarization, because we switch axes.  For pre-processing we set an axis like in anom.
             varr['vals'] = 0.5, 1.25, 0
-            varr['data_path'] = '%s\\DATA_10Hz_rot' % (varr['main_path'])  # Windows
-            # varr['data_path'] = '%s/DATA_10Hz_rot' % (varr['main_path'])
+            
+            varr['data_path'] = '%s%sDATA_10Hz_rot' % (varr['main_path'], filemarker)
 
             # 1) Orientation of joystick axes (Proven by standardization test)
             a = 17-1  # labeled (PI) - joystick movement
@@ -71,11 +76,7 @@ def s2_comparison_expparameters_vs_data(varr):
 
             # Load data experimental preprocessed data matrix
             file_name = "rotdat.pkl"
-            file_dir_name = "%s\\%s" % (varr['main_path2'], file_name)
-            open_file = open(file_dir_name, "rb")
-            dat = pickle.load(open_file)
-            open_file.close()
-
+            
         elif exp == 1:
             # Translational data - 14 participants
             varr['which_exp'] = 'trans'
@@ -84,8 +85,8 @@ def s2_comparison_expparameters_vs_data(varr):
             varr['anom'] = 'LR', 'FB', 'UD'
             varr['joyanom'] = '1', '2', '3'
             varr['vals'] = 3.75, 15, 0
-            varr['data_path'] = '%s\\DATA_10Hz_trans' % (varr['main_path'])  # Windows
-            # varr['data_path'] = '%s/DATA_10Hz_trans' % (varr['main_path'])
+            
+            varr['data_path'] = '%s%sDATA_10Hz_trans' % (varr['main_path'], filemarker)
 
             # 1) Orientation of joystick axes (Proven by standardization test)
             a = 16-1  # labeled (LR) - joystick movement
@@ -94,17 +95,20 @@ def s2_comparison_expparameters_vs_data(varr):
 
             # Load data experimental preprocessed data matrix
             file_name = "transdat.pkl"
-            file_dir_name = "%s\\%s" % (varr['main_path2'], file_name)
-            open_file = open(file_dir_name, "rb")
-            dat = pickle.load(open_file)
-            open_file.close()
-
-
+            
+            
+            
+        file_dir_name = "%s%s%s" % (varr['main_path2'], filemarker, file_name)
+        open_file = open(file_dir_name, "rb")
+        dat = pickle.load(open_file)
+        open_file.close()
+		
         corr_axis_out_exp = []
         corr_speed_stim_out_exp = []
 
         # 2) Load subjects
-        subs = range(len(dat))
+        #subs = range(len(dat))
+        subs = 0
         subs = make_a_properlist(subs)
         for s in subs:
             
@@ -133,23 +137,25 @@ def s2_comparison_expparameters_vs_data(varr):
             time = dat[s][14]                   # 14 : time_org
             SSQ = dat[s][15]                    # 15 : SSQ
             FRT_em = dat[s][16]                 # 16 : FRT
-            
         
         
-        fig = go.Figure()
-        config = dict({'scrollZoom': True, 'displayModeBar': True, 'editable': True})
-        xxORG = list(range(len(corr_axis_out_exp)))
-        fig.add_trace(go.Scatter(x=xxORG, y=corr_axis_out_exp, name='corr_axis_out_exp', line = dict(color='red', width=2, dash='dash'), showlegend=True))
-        fig.update_layout(title='Correlation of axis experimental matrix and axis data-driven (across trials) per subject', xaxis_title='subjects', yaxis_title='correlation (%s): axis' % (varr['which_exp']))
-        fig.show(config=config)
-        fig.write_image("%s\\corr_axis_out_exp_%s.png" % (varr['main_path2'], varr['which_exp']))
+        # ------------------------------
         
-        fig = go.Figure()
-        config = dict({'scrollZoom': True, 'displayModeBar': True, 'editable': True})
-        xxORG = list(range(len(corr_speed_stim_out_exp)))
-        fig.add_trace(go.Scatter(x=xxORG, y=corr_speed_stim_out_exp, name='corr_speed_stim_out_exp', line = dict(color='red', width=2, dash='dash'), showlegend=True))
-        fig.update_layout(title='Correlation of speed_stim experimental matrix and axis data-driven (across trials) per subject', xaxis_title='subjects', yaxis_title='correlation (%s): speed_stim' % (varr['which_exp']))
-        fig.show(config=config)
-        fig.write_image("%s\\corr_speed_stim_out_exp_%s.png" % (varr['main_path2'], varr['which_exp']))
+        if plotORnot == 1:
+		    fig = go.Figure()
+		    config = dict({'scrollZoom': True, 'displayModeBar': True, 'editable': True})
+		    xxORG = list(range(len(corr_axis_out_exp)))
+		    fig.add_trace(go.Scatter(x=xxORG, y=corr_axis_out_exp, name='corr_axis_out_exp', line = dict(color='red', width=2, dash='dash'), showlegend=True))
+		    fig.update_layout(title='Correlation of axis experimental matrix and axis data-driven (across trials) per subject', xaxis_title='subjects', yaxis_title='correlation (%s): axis' % (varr['which_exp']))
+		    fig.show(config=config)
+		    fig.write_image("%s%scorr_axis_out_exp_%s.png" % (varr['main_path2'], filemarker, varr['which_exp']))
+		    
+		    fig = go.Figure()
+		    config = dict({'scrollZoom': True, 'displayModeBar': True, 'editable': True})
+		    xxORG = list(range(len(corr_speed_stim_out_exp)))
+		    fig.add_trace(go.Scatter(x=xxORG, y=corr_speed_stim_out_exp, name='corr_speed_stim_out_exp', line = dict(color='red', width=2, dash='dash'), showlegend=True))
+		    fig.update_layout(title='Correlation of speed_stim experimental matrix and axis data-driven (across trials) per subject', xaxis_title='subjects', yaxis_title='correlation (%s): speed_stim' % (varr['which_exp']))
+		    fig.show(config=config)
+		    fig.write_image("%s%scorr_speed_stim_out_exp_%s.png" % (varr['main_path2'], filemarker, varr['which_exp']))
         
     return

@@ -39,7 +39,7 @@ def process_index_for_trials(s, good_tr, outSIG, marg, varr, starttrial_index, s
 
         axxx = int(axis_val[tr])
 
-        starttrial_index[tr] = 0 # 1
+        starttrial_index[tr] = 0
 
         # --------------------------------------------
         # Selection of stoptrial_index_derv

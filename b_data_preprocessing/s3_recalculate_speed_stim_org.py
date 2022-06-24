@@ -18,11 +18,15 @@ from subfunctions.full_sig_2_cell import *
 
 
 
-def s3_recalculate_speed_stim_org(speed_stim_dd, slope_per_exp, varr):
+def s3_recalculate_speed_stim_org(speed_stim_dd, slope_per_exp, varr, PCtype):
     
+	if PCtype == 'Windows':
+		filemarker = '\\'
+	elif PCtype == 'Linux':
+		filemarker = '/'
+   
     fs = 10 #  Original experimental sampling was at 250Hz, but data is downsampled to 10Hz
     ts = 1/fs
-
     
     corr_ssdir_dd_co_out = []
     corr_ssmag_dd_co_out = []
@@ -41,8 +45,7 @@ def s3_recalculate_speed_stim_org(speed_stim_dd, slope_per_exp, varr):
             varr['anom'] = 'RO', 'PI', 'YA'
             varr['joyanom'] = '1', '2', '3'  # Numbers for standarization, because we switch axes.  For pre-processing we set an axis like in anom.
             varr['vals'] = 0.5, 1.25, 0
-            varr['data_path'] = '%s\\DATA_10Hz_rot' % (varr['main_path'])  # Windows
-            # varr['data_path'] = '%s/DATA_10Hz_rot' % (varr['main_path'])
+            varr['data_path'] = '%s%sDATA_10Hz_rot' % (varr['main_path'], filemarker)
 
             # 1) Orientation of joystick axes (Proven by standardization test)
             a = 17-1  # labeled (PI) - joystick movement
@@ -51,10 +54,6 @@ def s3_recalculate_speed_stim_org(speed_stim_dd, slope_per_exp, varr):
             
             # Load data experimental preprocessed data matrix
             file_name = "rotdat.pkl"
-            file_dir_name = "%s\\%s" % (varr['main_path2'], file_name)
-            open_file = open(file_dir_name, "rb")
-            dat = pickle.load(open_file)
-            open_file.close()
 
         elif exp == 1:
             # Translational data - 14 participants
@@ -64,7 +63,7 @@ def s3_recalculate_speed_stim_org(speed_stim_dd, slope_per_exp, varr):
             varr['anom'] = 'LR', 'FB', 'UD'
             varr['joyanom'] = '1', '2', '3'
             varr['vals'] = 3.75, 15, 0
-            varr['data_path'] = '%s\\DATA_10Hz_trans' % (varr['main_path'])
+            varr['data_path'] = '%s%sDATA_10Hz_trans' % (varr['main_path'], filemarker)
 
             # 1) Orientation of joystick axes (Proven by standardization test)
             a = 16-1  # labeled (LR) - joystick movement
@@ -73,10 +72,13 @@ def s3_recalculate_speed_stim_org(speed_stim_dd, slope_per_exp, varr):
             
             # Load data experimental preprocessed data matrix
             file_name = "transdat.pkl"
-            file_dir_name = "%s\\%s" % (varr['main_path2'], file_name)
-            open_file = open(file_dir_name, "rb")
-            dat = pickle.load(open_file)
-            open_file.close()
+        
+        
+        
+        file_dir_name = "%s%s%s" % (varr['main_path2'], filemarker, file_name)
+        open_file = open(file_dir_name, "rb")
+        dat = pickle.load(open_file)
+        open_file.close()
         
         corr_ssdir_dd_co_exp = []
         corr_ssmag_dd_co_exp = []
@@ -94,7 +96,7 @@ def s3_recalculate_speed_stim_org(speed_stim_dd, slope_per_exp, varr):
             
             # ------------------------------
             # (1) Load orignal data
-            A = np.loadtxt("%s\\%s.txt" % (varr['data_path'], varr['subjects'][s]))  # Windows
+            A = np.loadtxt("%s%s%s.txt" % (varr['data_path'], filemarker, varr['subjects'][s]))
 
             # ------------------------------
             # (2) Load pre-preocessed data
@@ -188,7 +190,7 @@ def s3_recalculate_speed_stim_org(speed_stim_dd, slope_per_exp, varr):
             # ------------------------------
             # Calculate correlation for DD (direction=sign(slope_per_exp) and EM (direction=sign(speed_stim_org_co)
             # Pearson correlation coefficient : corr (x,y) = cov (x,y) / (std (x) * std (y))
-            corr_ssdir_dd_co = np.corrcoef(speed_stim_dd[exp][s], speed_stim_org_co) # outputs a correlation matrix
+            corr_ssdir_dd_co = np.corrcoef(sign(speed_stim_dd[exp][s]), sign(speed_stim_org_co)) # outputs a correlation matrix
             corr_ssdir_dd_co = corr_ssdir_dd_co[0,1]
             
             # Calculate correlation for DD (magnitude=speed_stim_dd and EM (magnitude=speed_stim_org_co)

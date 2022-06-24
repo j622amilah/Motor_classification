@@ -28,7 +28,12 @@ from b_data_preprocessing.speed_stim_from_initslope import *
 
 
 
-def s3_calc_datadriven_speedstim(varr):
+def s3_calc_datadriven_speedstim(varr, PCtype):
+
+	if PCtype == 'Windows':
+		filemarker = '\\'
+	elif PCtype == 'Linux':
+		filemarker = '/'
 
     fs = 10 #  Original experimental sampling was at 250Hz, but data is downsampled to 10Hz
     ts = 1/fs
@@ -51,8 +56,8 @@ def s3_calc_datadriven_speedstim(varr):
             varr['anom'] = 'RO', 'PI', 'YA'
             varr['joyanom'] = '1', '2', '3'  # Numbers for standarization, because we switch axes.  For pre-processing we set an axis like in anom.
             varr['vals'] = 0.5, 1.25, 0
-            varr['data_path'] = '%s\\DATA_10Hz_rot' % (varr['main_path'])  # Windows
-            # varr['data_path'] = '%s/DATA_10Hz_rot' % (varr['main_path'])
+            
+            varr['data_path'] = '%s%sDATA_10Hz_rot' % (varr['main_path'], filemarker)
 
             # 1) Orientation of joystick axes (Proven by standardization test)
             a = 17-1  # labeled (PI) - joystick movement
@@ -61,10 +66,6 @@ def s3_calc_datadriven_speedstim(varr):
 
             # Load data experimental preprocessed data matrix
             file_name = "rotdat.pkl"
-            file_dir_name = "%s\\%s" % (varr['main_path2'], file_name)
-            open_file = open(file_dir_name, "rb")
-            dat = pickle.load(open_file)
-            open_file.close()
 
         elif exp == 1:
             # Translational data - 14 participants
@@ -74,8 +75,7 @@ def s3_calc_datadriven_speedstim(varr):
             varr['anom'] = 'LR', 'FB', 'UD'
             varr['joyanom'] = '1', '2', '3'
             varr['vals'] = 3.75, 15, 0
-            varr['data_path'] = '%s\\DATA_10Hz_trans' % (varr['main_path'])  # Windows
-            # varr['data_path'] = '%s/DATA_10Hz_trans' % (varr['main_path'])
+            varr['data_path'] = '%s%sDATA_10Hz_trans' % (varr['main_path'], filemarker)
 
             # 1) Orientation of joystick axes (Proven by standardization test)
             a = 16-1  # labeled (LR) - joystick movement
@@ -84,19 +84,20 @@ def s3_calc_datadriven_speedstim(varr):
 
             # Load data experimental preprocessed data matrix
             file_name = "transdat.pkl"
-            file_dir_name = "%s\\%s" % (varr['main_path2'], file_name)
-            open_file = open(file_dir_name, "rb")
-            dat = pickle.load(open_file)
-            open_file.close()
-
-
         
+        
+        
+        file_dir_name = "%s%s%s" % (varr['main_path2'], filemarker, file_name)
+        open_file = open(file_dir_name, "rb")
+        dat = pickle.load(open_file)
+        open_file.close()
+
         # ------------------------------
+        
         totsub_slope_ORG = []
         
         # 2) Load subjects
-        subs = range(len(dat))
-        subs = make_a_properlist(subs)
+        subs = np.arange(len(dat))
 
         for s in subs:
             num_of_tr = len(dat[s][0])

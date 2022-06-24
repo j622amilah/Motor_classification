@@ -56,8 +56,8 @@ def just_stat_joy_cab_directional_ctrl(varr):
             varr['anom'] = 'RO', 'PI', 'YA'
             varr['joyanom'] = '1', '2', '3'  # Numbers for standarization, because we switch axes.  For pre-processing we set an axis like in anom.
             varr['vals'] = 0.5, 1.25, 0
-            varr['data_path'] = '%s\\DATA_10Hz_rot' % (varr['main_path'])  # Windows
-            # varr['data_path'] = '%s/DATA_10Hz_rot' % (varr['main_path'])
+            # varr['data_path'] = '%s\\DATA_10Hz_rot' % (varr['main_path'])  # Windows
+            varr['data_path'] = '%s/DATA_10Hz_rot' % (varr['main_path'])
         elif exp == 1:
             # Translational data - 14 participants
             varr['which_exp'] = 'trans'
@@ -66,8 +66,8 @@ def just_stat_joy_cab_directional_ctrl(varr):
             varr['anom'] = 'LR', 'FB', 'UD'
             varr['joyanom'] = '1', '2', '3'
             varr['vals'] = 3.75, 15, 0
-            varr['data_path'] = '%s\\DATA_10Hz_trans' % (varr['main_path'])  # Windows
-            # varr['data_path'] = '%s/DATA_10Hz_trans' % (varr['main_path'])
+            # varr['data_path'] = '%s\\DATA_10Hz_trans' % (varr['main_path'])  # Windows
+            varr['data_path'] = '%s/DATA_10Hz_trans' % (varr['main_path'])
 
 
         # 2) Load subjects
@@ -79,8 +79,8 @@ def just_stat_joy_cab_directional_ctrl(varr):
             
             # ------------------------------
             # (1) Load data
-            A = np.loadtxt("%s\\%s.txt" % (varr['data_path'], varr['subjects'][s]))  # Windows
-            #A = np.loadtxt("%s/%s.txt" % (varr['data_path'], varr['subjects'][s]))
+            # A = np.loadtxt("%s\\%s.txt" % (varr['data_path'], varr['subjects'][s]))  # Windows
+            A = np.loadtxt("%s/%s.txt" % (varr['data_path'], varr['subjects'][s]))
 
             # print('Size of A matrix : ' + str(size(A)))     # result(row00=9445, col00=22)
             # ------------------------------
@@ -130,9 +130,9 @@ def just_stat_joy_cab_directional_ctrl(varr):
                     # ------------------------------
 
                     # ------------------------------
-                    # Check if axes are assigned correctly to trials: PLOTTING
+                    # Check if axes are assigned correctly to trials: PLOTTING final plot
                     # ------------------------------
-                    plotORnot = 0  # 1 = show figures, 0 = do not show figures
+                    plotORnot = 1  # 1 = show figures, 0 = do not show figures
                     if plotORnot == 1:
                         filename = 'images_cutfinal_%s' % (varr['which_exp'])
                         check_axes_assignmentPLOT(s, outJOY, outSIG, axis_out, varr, filename, time_org)
@@ -161,7 +161,7 @@ def just_stat_joy_cab_directional_ctrl(varr):
                                 print('strict : ' + str(strict))
                                 
                             
-                                # Deadzon = 0.1  - Rotation and Translation orientation
+                                # Deadzone = 0.1  - Rotation and Translation orientation
                                 marg_joy = mj_val[mj]
                             
                             
@@ -251,12 +251,15 @@ def just_stat_joy_cab_directional_ctrl(varr):
                                 
                                 # create a directory for saving data
                                 filename = 'data_standard_%s' % (varr['which_exp'])
-                                if not os.path.exists("%s\\%s" % (varr['main_path1'], filename)):
-                                    os.mkdir("%s\\%s" % (varr['main_path1'], filename))
+                                
+                                if not os.path.exists("%s/%s" % (varr['main_path1'], filename)):
+                                    os.mkdir("%s/%s" % (varr['main_path1'], filename))
+                                # if not os.path.exists("%s\\%s" % (varr['main_path1'], filename)):
+                                #     os.mkdir("%s\\%s" % (varr['main_path1'], filename))
                                 
                                 # First try saving a matrix per condition set : Save data matrices to file
-                                # file_name = "%s/s%d_orax%d_yr%d_dirC%d_marg%d_st%d_outSIG.pkl" % (filename, s, orax, yr, dirC, mj, strict)
-                                file_name = "%s\\%s\\s%d_orax%d_yr%d_dirC%d_marg%d_st%d_outSIG.pkl" % (varr['main_path1'], filename, s, orax, yr, dirC, mj, strict)
+                                file_name = "%s/%s/s%d_orax%d_yr%d_dirC%d_marg%d_st%d_outSIG.pkl" % (varr['main_path1'], filename, s, orax, yr, dirC, mj, strict)
+                                # file_name = "%s\\%s\\s%d_orax%d_yr%d_dirC%d_marg%d_st%d_outSIG.pkl" % (varr['main_path1'], filename, s, orax, yr, dirC, mj, strict)
                                 open_file = open(file_name, "wb")
                                 pickle.dump(X, open_file)
                                 open_file.close()
