@@ -308,8 +308,6 @@ def main_preprocessing_steps(varr, A, a, b, c, s, NUMmark, yr, plotORnot_ALL, fi
     # -------------------------------------
     # Cut the good trial data more precisely depending on (RO/LR, PI/FB, YA/UD)
     # -------------------------------------
-    speed_stim_sign = np.zeros((Len_tr, 1))
-    speed_stim_mag = np.zeros((Len_tr, 1))
     starttrial_index = np.zeros((Len_tr, 1))
     stoptrial_index = np.zeros((Len_tr, 1))
     
@@ -343,7 +341,7 @@ def main_preprocessing_steps(varr, A, a, b, c, s, NUMmark, yr, plotORnot_ALL, fi
         plotORnot = 0  # 1 = show figures, 0 = do not show figures
         plotORnot_derv = 0  # 1 = show figures, 0 = do not show figures
         
-        starttrial_index, stoptrial_index, speed_stim_sign, speed_stim_mag = process_index_for_trials(s, good_tr, outSIG, marg, varr, starttrial_index, stoptrial_index, speed_stim_sign, speed_stim_mag, plotORnot, plotORnot_derv, axis_out, filename)
+        starttrial_index, stoptrial_index = process_index_for_trials(s, good_tr, outSIG, marg, varr, starttrial_index, stoptrial_index, plotORnot, plotORnot_derv, axis_out, filename)
     elif varr['which_exp'] == 'trans':
         for tr in good_tr:
             # print('tr : ' + str(tr))
@@ -353,14 +351,14 @@ def main_preprocessing_steps(varr, A, a, b, c, s, NUMmark, yr, plotORnot_ALL, fi
                 # Do special cutting process for UD trials only
                 plotORnot = 0  # 1 = show figures, 0 = do not show figures
                 plotORnot_derv = 0  # 1 = show figures, 0 = do not show figures
-                starttrial_index, stoptrial_index, speed_stim_sign, speed_stim_mag = process_index_for_UD_trials_timedetect(s, tr, outSIG, starttrial_index, stoptrial_index, speed_stim_sign, speed_stim_mag, plotORnot, plotORnot_derv, marg, filename)
+                starttrial_index, stoptrial_index = process_index_for_UD_trials_timedetect(s, tr, outSIG, starttrial_index, stoptrial_index, plotORnot, plotORnot_derv, marg, filename)
                 
             elif axis_out[tr] < 2:  # FB or LR
                 # print('Running FB or LR processing')
                 # Do special cutting process for LR/FB trials only
                 plotORnot = 0  # 1 = show figures, 0 = do not show figures
                 plotORnot_derv = 0 # 1 = show figures, 0 = do not show figures
-                starttrial_index, stoptrial_index, speed_stim_sign, speed_stim_mag = process_index_for_FBLR_trials_timedetect(s, tr, outSIG, marg, varr, starttrial_index, stoptrial_index, speed_stim_sign, speed_stim_mag, plotORnot, plotORnot_derv, axis_out, filename)
+                starttrial_index, stoptrial_index = process_index_for_FBLR_trials_timedetect(s, tr, outSIG, marg, varr, starttrial_index, stoptrial_index, plotORnot, plotORnot_derv, axis_out, filename)
     # ------------------------------
     
     
@@ -525,9 +523,8 @@ def main_preprocessing_steps(varr, A, a, b, c, s, NUMmark, yr, plotORnot_ALL, fi
     # ------------------------------
     # Speed stim sign measurements : There are multiple ways to calculate the speed stimulus direction
     # ------------------------------
-    speed_stim_org_sign = make_a_properlist(np.sign(speed_stim_org))  # 1st way to calculate speed_stim_sign (Experimental matrix)
-    speed_stim_sign = make_a_properlist(speed_stim_sign)   # 2nd way to calculate speed_stim_sign (Data driven : using the cabin stimulus movement slope. The problem with this method is that the cabin stimulus is a sum of both the stimulus and the joystick, so this may not be correct all the time)
-    speed_stim_tas_sign = make_a_properlist(np.sign(tar_ang_speed_val_co))   # 3rd way to calculate speed_stim_sign (Experimental matrix)
+    speed_stim_org_sign = make_a_properlist(np.sign(speed_stim_org))  # 1st way to calculate sign of speed stim (Experimental matrix)
+    speed_stim_tas_sign = make_a_properlist(np.sign(tar_ang_speed_val_co))   # 2nd way to calculate sign of speed stim (Experimental matrix)
     # ------------------------------
         
         
@@ -552,4 +549,4 @@ def main_preprocessing_steps(varr, A, a, b, c, s, NUMmark, yr, plotORnot_ALL, fi
         # --------------------
     # ------------------------------
     
-    return starttrial_index, stoptrial_index, speed_stim_sign, speed_stim_org_sign, speed_stim_mag, speed_stim_org, tar_ang_speed_val_co, speed_stim_tas_sign, axis_out, axis_org, new3_ind_st, new3_ind_end, g_rej_vec, outJOY, outSIG, outSIGCOM, outNOISE, corr_axis_out, trialnum_org, time_org, FRT, good_tr
+    return starttrial_index, stoptrial_index, speed_stim_org_sign, speed_stim_org, tar_ang_speed_val_co, speed_stim_tas_sign, axis_out, axis_org, new3_ind_st, new3_ind_end, g_rej_vec, outJOY, outSIG, outSIGCOM, outNOISE, corr_axis_out, trialnum_org, time_org, FRT, good_tr

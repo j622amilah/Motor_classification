@@ -11,7 +11,7 @@ from subfunctions.make_a_properlist import *
 from subfunctions.detect_sig_change_wrt_baseline import *
 
 
-def process_index_for_FBLR_trials_timedetect(s, tr, outSIG, marg, varr, starttrial_index, stoptrial_index, speed_stim_sign, speed_stim_mag, plotORnot, plotORnot_derv, axis_val, filename):
+def process_index_for_FBLR_trials_timedetect(s, tr, outSIG, marg, varr, starttrial_index, stoptrial_index, plotORnot, plotORnot_derv, axis_val, filename):
 
     # An FB and LR trial consists of [trial mvt + reinitialization mvt + possible UD initialization mvt] events.
     # For each FB, LR, and rot (RO, PI, YA) start-stop index, this step tries to determine when the 
@@ -177,33 +177,6 @@ def process_index_for_FBLR_trials_timedetect(s, tr, outSIG, marg, varr, starttri
 
 
     # --------------------------------------------
-    # Fill in EXPERIMENTAL PARAMETER list: speed stim sign, speed stim magnitude
-    # --------------------------------------------
-    # Get the sign of the slope of the initial cabin movement
-    evaluate_dp = 20
-    #vec = sig[ range(int(starttrial_index[tr][0]), int(starttrial_index[tr][0] + evaluate_dp)) ]
-    vec = sig[ range(starttrial_index[tr], starttrial_index[tr]+evaluate_dp) ]
-    
-    xx = list(range(len(vec)))
-    
-    P = np.polyfit(xx, vec, 1) # approximates coefficients for a linear function y = a1*x + a2 so first coefficient is the slope
-    w_MP = P[0]		# a1 (slope), linear parameter
-    b_MP = P[1]		# a2 (y-intercept), linear parameter
-
-    if abs(w_MP) < 0.001:
-        # this is likely to be a zero stim trial
-        speed_stim_sign[tr] = 0
-    else:
-        speed_stim_sign[tr] = np.sign(w_MP)
-
-    # practically always true, if stimulation is sup the movements will be stronger,
-    # and if sub the movements will be weakers so the max cabin movement reached is 
-    # likely to reflect the stimulation
-    speed_stim_mag[tr] = val 
-    # --------------------------------------------
-
-
-    # --------------------------------------------
     # FIGURE: Final plot of choosen start-stop point
     if plotORnot == 1:
         marksize = 15
@@ -256,7 +229,7 @@ def process_index_for_FBLR_trials_timedetect(s, tr, outSIG, marg, varr, starttri
         # print('stoptrial_index_zoneofmax: ' + str(sp_i_zofm))
         fig.add_trace(go.Scatter(x=sp_i_zofm, y=sig[sp_i_zofm], name='stopzonemax', mode='markers', marker=dict(color='magenta', size=10, line=dict(color='magenta', width=0)), showlegend=True))
 
-        title_str = 'sub: %d, axis: %s, trial: %d, starttrial: %d, stoptrial: %d, derv: %d, max: %d, zonemax: %d, sign=%d, mag=%d' % (s, axis_str, tr, starttrial_index[tr], stoptrial_index[tr], stoptrial_index_derv, stoptrial_index_max, stoptrial_index_zoneofmax, speed_stim_sign[tr], speed_stim_mag[tr])
+        title_str = 'sub: %d, axis: %s, trial: %d, starttrial: %d, stoptrial: %d, derv: %d, max: %d, zonemax: %d, sign=%d, mag=%d' % (s, axis_str, tr, starttrial_index[tr], stoptrial_index[tr], stoptrial_index_derv, stoptrial_index_max, stoptrial_index_zoneofmax)
         
         fig.update_layout(title=title_str, xaxis_title='data points', yaxis_title='Cabin position')
 
@@ -269,4 +242,4 @@ def process_index_for_FBLR_trials_timedetect(s, tr, outSIG, marg, varr, starttri
 
     del sig
 
-    return starttrial_index, stoptrial_index, speed_stim_sign, speed_stim_mag
+    return starttrial_index, stoptrial_index

@@ -18,7 +18,7 @@ from subfunctions.make_a_properlist import *
 from subfunctions.detect_sig_change_wrt_baseline import *
 
 
-def process_index_for_UD_trials_timedetect(s, tr, outSIG, starttrial_index, stoptrial_index, speed_stim_sign, speed_stim_mag, plotORnot, plotORnot_derv, marg, filename):
+def process_index_for_UD_trials_timedetect(s, tr, outSIG, starttrial_index, stoptrial_index, plotORnot, plotORnot_derv, marg, filename):
     
     # A UD trial consist of [trial mvt + reinitialization mvt] events.
     # For each UD start-stop index, this step tries to determine when the "trial mvt" event start and stops.
@@ -216,9 +216,6 @@ def process_index_for_UD_trials_timedetect(s, tr, outSIG, starttrial_index, stop
         # It never goes out of the start baseline zone, so the stop point is the corresponding end value (the entire length of the signal)
         
         stoptrial_index[tr] = value_end[-1] # the last point before the robot descends
-        
-        speed_stim_sign[tr] = 0
-        speed_stim_mag[tr] = 0
     else:
         # Way 1:
         # If stoptrial_index_derv is close to the end of the signal, choose stoptrial_index_zoneofmax
@@ -299,23 +296,6 @@ def process_index_for_UD_trials_timedetect(s, tr, outSIG, starttrial_index, stop
     # ------------------------------
     
 
-    if len(indexOFsig_in_zone) == len(vec):
-        # Zero stim trial : signal never goes outside of zone (the cabin does not move), set direction to 0
-        speed_stim_sign[tr] = 0
-    else:
-        # Take the difference between first datapoint in zone and first datapoint outside of zone
-        diff = dp_sign_not_in_zone[0] - vec[0]
-        speed_stim_sign[tr] = np.sign(diff)
-    # --------------------------------------------
-    
-    # --------------------------------------------
-    # To get the experimental stimulation magnitude (double checking experimental matrix) : 0, 3.75, 15
-    # practically always true, if stimulation is sup the movements will be stronger,
-    # and if sub the movements will be weakers so the max cabin movement reached is 
-    # likely to reflect the stimulation
-    speed_stim_mag[tr] = max(abs(vec))
-    # --------------------------------------------
-
     # --------------------------------------------
     if plotORnot == 1:
         marksize = 15
@@ -391,7 +371,7 @@ def process_index_for_UD_trials_timedetect(s, tr, outSIG, starttrial_index, stop
             ve = [int(x) for x in ve] # convert to integer
             fig.add_trace(go.Scatter(x=ve, y=outSIG[tr][ve, 2], name='end derv peaks', mode='markers', marker=dict(color='orange', size=5, line=dict(color='orange', width=0)), showlegend=True))
             
-        title_str = 'sub: %d, axis : UD, trial: %d, starttrial: %d, stoptrial: %d, stoppt derv: %d, stoppt max: %d, stoppt zone: %d, value end: %d, sign=%d, mag=%d' % (s, tr, starttrial_index[tr], stoptrial_index[tr], stoptrial_index_derv, stoptrial_index_max, stoptrial_index_zoneofmax, value_end[-1], speed_stim_sign[tr], speed_stim_mag[tr])
+        title_str = 'sub: %d, axis : UD, trial: %d, starttrial: %d, stoptrial: %d, stoppt derv: %d, stoppt max: %d, stoppt zone: %d, value end: %d, sign=%d, mag=%d' % (s, tr, starttrial_index[tr], stoptrial_index[tr], stoptrial_index_derv, stoptrial_index_max, stoptrial_index_zoneofmax, value_end[-1])
         # -------
         
         # -------
@@ -402,9 +382,9 @@ def process_index_for_UD_trials_timedetect(s, tr, outSIG, starttrial_index, stop
                 # ve = [int(x) for x in ve] # convert to integer
                 # fig.add_trace(go.Scatter(x=ve, y=outSIG[tr][ve, 2], name='end derv peaks', mode='markers', marker=dict(color='orange', size=5, line=dict(color='orange', width=0)), showlegend=True))
 
-            # title_str = 'sub: %d, axis : UD, trial: %d, starttrial: %d, stoptrial: %d, stoppt derv: %d, stoppt max: %d, stoppt zone: %d, value end: %d, sign=%d, mag=%d' % (s, tr, starttrial_index[tr], stoptrial_index[tr], stoptrial_index_derv, stoptrial_index_max, stoptrial_index_zoneofmax, value_end[-1], speed_stim_sign[tr], speed_stim_mag[tr])
+            # title_str = 'sub: %d, axis : UD, trial: %d, starttrial: %d, stoptrial: %d, stoppt derv: %d, stoppt max: %d, stoppt zone: %d, value end: %d, sign=%d, mag=%d' % (s, tr, starttrial_index[tr], stoptrial_index[tr], stoptrial_index_derv, stoptrial_index_max, stoptrial_index_zoneofmax, value_end[-1])
         # else: 
-            # title_str = 'sub: %d, axis : UD, trial: %d, starttrial: %d, stoptrial: %d, stoppt derv: %d, stoppt max: %d, stoppt zone: %d, sign=%d, mag=%d' % (s, tr, starttrial_index[tr], stoptrial_index[tr], stoptrial_index_derv, stoptrial_index_max, stoptrial_index_zoneofmax, speed_stim_sign[tr], speed_stim_mag[tr])
+            # title_str = 'sub: %d, axis : UD, trial: %d, starttrial: %d, stoptrial: %d, stoppt derv: %d, stoppt max: %d, stoppt zone: %d, sign=%d, mag=%d' % (s, tr, starttrial_index[tr], stoptrial_index[tr], stoptrial_index_derv, stoptrial_index_max, stoptrial_index_zoneofmax)
         # -------
 
         fig.update_layout(title=title_str, xaxis_title='data points', yaxis_title='Cabin position')
@@ -417,4 +397,4 @@ def process_index_for_UD_trials_timedetect(s, tr, outSIG, starttrial_index, stop
 
 
     
-    return starttrial_index, stoptrial_index, speed_stim_sign, speed_stim_mag
+    return starttrial_index, stoptrial_index

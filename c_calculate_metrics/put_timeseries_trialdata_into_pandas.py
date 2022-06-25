@@ -3,7 +3,7 @@ import pickle
 import numpy as np
 
 
-def put_timeseries_trialdata_into_pandas(varr):
+def put_timeseries_trialdata_into_pandas(varr, filemarker):
     
     df_timeseries_exp = {}
 
@@ -17,20 +17,20 @@ def put_timeseries_trialdata_into_pandas(varr):
             varr['anom'] = 'RO', 'PI', 'YA'
             
             # Time series data per subject per trial
-            file_name1 = "%s\\rotdat2.pkl" % (varr['main_path2'])
+            file_name1 = "%s%srotdat.pkl" % (varr['main_path2'], filemarker)
 
             # Load data experimental preprocessed data matrix
-            file_name2 = "%s\\rot_Xexp.pkl" % (varr['main_path3'])
+            file_name2 = "%s%srot_Xexp.pkl" % (varr['main_path3'], filemarker)
         elif exp == 1:
             # Translational data - 14 participants
             varr['which_exp'] = 'trans'
             varr['anom'] = 'LR', 'FB', 'UD'
 
             # Time series data per subject per trial
-            file_name1 = "%s\\transdat2.pkl" % (varr['main_path2'])
+            file_name1 = "%s%stransdat.pkl" % (varr['main_path2'], filemarker)
 
             # Experimental preprocessed : a scalar metric per subject per trial
-            file_name2 = "%s\\trans_Xexp.pkl" % (varr['main_path3'])
+            file_name2 = "%s%strans_Xexp.pkl" % (varr['main_path3'], filemarker)
 
         open_file = open(file_name1, "rb")
         dat = pickle.load(open_file)
@@ -61,7 +61,7 @@ def put_timeseries_trialdata_into_pandas(varr):
                 ax = dat[s][1][tr]*np.ones((num_dp,1))
 
                 dp = np.reshape(list(range(num_dp)), (num_dp,1))
-                time = np.reshape(dat[s][9][tr], (num_dp,1))
+                time = np.reshape(dat[s][8][tr], (num_dp,1))
 
                 res_type = X[s][:,5][tr]*np.ones((num_dp,1))
                 
@@ -75,7 +75,7 @@ def put_timeseries_trialdata_into_pandas(varr):
 
                 outJOY_ax0 = np.reshape(dat[s][6][tr][:,0], (num_dp,1))
                 outJOY_ax1 = np.reshape(dat[s][6][tr][:,1], (num_dp,1))
-                outJOY_ax2 = np.reshape(dat[s][7][tr][:,2], (num_dp,1))
+                outJOY_ax2 = np.reshape(dat[s][6][tr][:,2], (num_dp,1))
 
                 outNOISE_ax0 = np.reshape(dat[s][7][tr][:,0], (num_dp,1))
                 outNOISE_ax1 = np.reshape(dat[s][7][tr][:,1], (num_dp,1))
